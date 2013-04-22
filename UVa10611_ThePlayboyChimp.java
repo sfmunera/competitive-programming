@@ -8,20 +8,6 @@ package uva;
 import java.io.*;
 
 public class UVa10611_ThePlayboyChimp {
-	
-	static int binSearch(int[] A, int x) {
-		int lo = -1;
-		int hi = A.length;
-		
-		while (lo < hi) {
-			int mid = (lo + hi) / 2;
-			if (A[mid] <= x)
-				lo = mid + 1;
-			else
-				hi = mid;
-		}
-		return (lo == -1 || lo == A.length) ? -1 : lo;
-	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -38,16 +24,33 @@ public class UVa10611_ThePlayboyChimp {
 		
 		for (int i = 0; i < Q; ++i) {
 			int q = Integer.parseInt(parts[i]);
+			int lo, hi;
 			
-			int ind2 = binSearch(heights, q);
+			lo = 0;
+			hi = heights.length;
+			// Find position of the last element < val
+			while (lo < hi) {
+				int mid = (lo + hi) / 2;
+				if (heights[mid] >= q)
+					hi = mid;
+				else
+					lo = mid + 1;
+			}
+			int ind1 = lo - 1;
 			
-			int ind1 = ind2 - 1;
-			if (ind2 < 0)
-				ind1 = N - 1;
-			while (ind1 >= 0 && heights[ind1] >= q)
-				--ind1;
-			
-			System.out.println((ind1 >= 0 ? heights[ind1] : "X") + " " + (ind2 >= 0 ? heights[ind2] : "X"));
+			lo = 0;
+			hi = heights.length;
+			// Find position of the first element > val
+			while (lo < hi) {
+				int mid = (lo + hi) / 2;
+				if (heights[mid] > q)
+					hi = mid;
+				else
+					lo = mid + 1;
+			}
+			int ind2 = lo;
+
+			System.out.println((ind1 >= 0 ? heights[ind1] : "X") + " " + (ind2 < heights.length ? heights[ind2] : "X"));
 		}
 		
 		in.close();
