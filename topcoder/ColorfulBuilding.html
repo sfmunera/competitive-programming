@@ -1,0 +1,163 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>There are N skyscrapers standing in a line from left to right.
+The buildings are numbered 1 through N, in some order (not necessarily from left to right).
+You do not know this order.
+For each i, the height of building i is i.
+Thus, the heights of the N buildings form a permutation of 1 through N.
+<br></br>
+Each of the buildings is painted using a single color.
+Multiple buildings may share the same color.
+For each i, you know the color of building i.
+(The technical details are specified below.)
+<br></br>
+You are standing far to the left of all the buildings.
+From your location, you can only see parts of some buildings, because smaller buildings farther from you are obscured by taller ones that are closer.
+Formally, you can see (some top part of) building X if and only if all of the buildings in front of X (that is, to the left of X in the row) are lower than building X.
+<br></br>
+Additionally, from where you are standing you cannot distinguish between two buildings that have the same color.
+More precisely, whenever you see two buildings with heights H1 and H2 (H1 &lt; H2) such that they both have the same color and you can see no building that stands between them, they seem to you as one building.
+This also naturally extends to more than two buildings of the same color.
+<br></br>
+You think you now see <b>L</b> buildings.
+In other words, as you look at the buildings from where you are standing, you see exactly <b>L</b>-1 places where the color changes.
+<br></br>
+You are given String[]s <b>color1</b> and <b>color2</b>, and the int <b>L</b>.
+The String[]s <b>color1</b> and <b>color2</b> can be used to determine the colors of buildings in the following way:
+Concatenate all elements of <b>color1</b> to obtain a String C1.
+Concatenate all elements of <b>color2</b> to obtain a String C2.
+The strings C1 and C2 will each have exactly N characters.
+Now, for each i and j: buildings i and j have the same color if and only if both C1[i-1]=C1[j-1] and C2[i-1]=C2[j-1].
+In other words, for each i the color of building i is described by the two-character string C1[i-1] + C2[i-1].
+<br></br>
+Given this information, compute and return the number of possible orders of the N buildings, modulo 1,000,000,009.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>ColorfulBuilding</td></tr><tr><td>Method:</td><td>count</td></tr><tr><td>Parameters:</td><td>String[], String[], int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int count(String[] color1, String[] color2, int L)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>color1</b> and <b>color2</b> will each contain between 1 and 36 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>color1</b> and <b>color2</b> will contain the same number of elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>color1</b> and <b>color2</b> will contain between 1 and 36 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>For each i, the i-th elements of <b>color1</b> and <b>color2</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character of each element of <b>color1</b> and <b>color2</b> will be a lowercase or an uppercase letter ('a'-'z' or 'A'-'Z').</td></tr><tr><td align="center" valign="top">-</td><td><b>L</b> will be between 1 and N, where N is the total number of characters in <b>color1</b>.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;aaba&quot;}</pre></td></tr><tr><td><pre>{&quot;aaaa&quot;}</pre></td></tr><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2">There are 4 buildings.
+Buildings 1, 2, and 4 share the same color, building 3 is different.
+<br></br>
+There are 6 valid orders of buildings (from left to right):
+<ul>
+<li>1, 2, 3, 4</li>
+<li>1, 3, 2, 4</li>
+<li>1, 3, 4, 2</li>
+<li>2, 1, 3, 4</li>
+<li>2, 3, 1, 4</li>
+<li>2, 3, 4, 1</li>
+</ul>
+Note that if the buildings stand in the order 1, 2, 3, 4, you can see all four buildings.
+However, as buildings 1 and 2 have the same color, you regard them as one building.
+Therefore, you think you see 3 buildings.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;aaba&quot;}</pre></td></tr><tr><td><pre>{&quot;aaba&quot;}</pre></td></tr><tr><td><pre>4</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">For each possible order of these buildings you will think you see at most 3 buildings.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;ab&quot;, &quot;ba&quot;, &quot;a&quot;, &quot;aab&quot;}</pre></td></tr><tr><td><pre>{&quot;bb&quot;, &quot;ba&quot;, &quot;a&quot;, &quot;aba&quot;}</pre></td></tr><tr><td><pre>5</pre></td></tr></table></td></tr><tr><td><pre>Returns: 432</pre></td></tr><tr><td><table><tr><td colspan="2">Make sure to concatenate all the elements of <b>color1</b> and <b>color2</b>.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;xxxxxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxxxxx&quot;}</pre></td></tr><tr><td><pre>{&quot;xxxxxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOxxxxxxxxxxxxOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxOOOOOOOOOOOOOOOOxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxxxxx&quot;,
+ &quot;xxxxxxxxxxxxxxxxxxxx&quot;}</pre></td></tr><tr><td><pre>58</pre></td></tr></table></td></tr><tr><td><pre>Returns: 619787617</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;SJXcabKTWeUXhwxGixFepQaQlFxrAedNAtVP&quot;,
+ &quot;gorBIkcTlOFbLDbFeElYAyAqszQdMbpxSRdE&quot;,
+ &quot;SQVHPehlNtesbJDflyGxMqvgzjXisRnqDcQO&quot;,
+ &quot;pIAEBwbmpPWCooQAujbGXFGLvXxTmExLARkf&quot;,
+ &quot;AFnWyWKVObfxDGCjTxdZaObgwdxlPKtIxaAd&quot;,
+ &quot;uznMpJVNjAofbHJjOrZeSHgSagOCUMGbvkVR&quot;,
+ &quot;LBRrDbTAyKfVnedKiRfzgRzECpcsziqaTwdo&quot;,
+ &quot;JrJHvsEVVGDkNVGqLbpxyLDPloBuNDQKnReI&quot;,
+ &quot;SSYpbjKHSCnQhuyYrVauWDHDyhAoGyecrZMv&quot;,
+ &quot;UdetQfWEUWHHuAxRSdkJOOJSixKpQXpCFZHO&quot;,
+ &quot;KXVsQbuQtIgsULOMsTvPFNUqkBldMTLCipYK&quot;,
+ &quot;hoXConjnDWQkZVtyZlwSedvdVrNWqQhGUClQ&quot;,
+ &quot;TpsvvyoXsXmQpBAGGVDrXCkodoRHQZmpoQDW&quot;,
+ &quot;csiJspzTqeFBRmPgeEtTAzfrfCGlTZqcPuyO&quot;,
+ &quot;vsPDVBJVaJmUAtDdcsKoUkPEbDmAwtZKwjjP&quot;,
+ &quot;MOfoMhMiKIvGQoeIJXHzyClWRtRuKXMqxUAF&quot;,
+ &quot;KyyUCkRBjsYvmPFFEGBqqVhIUdtvIyyLacfu&quot;,
+ &quot;BfuwfSajSlcuTzhMufHSQLudvGEGlyHsEmBD&quot;,
+ &quot;PLpIXZkdyXveTMfSvqnDGKWOZrTBMUIlZrqF&quot;,
+ &quot;dzVMCqrSLbanRJTYpDJNHAOLPSzmvSEPQJYm&quot;,
+ &quot;rAjRkrSjouJyFaCSPPLYSzqDmMoADyWAbobJ&quot;,
+ &quot;eOCBrJNoyFnGpXpxiExXcoOHnVsaEPXhPfLe&quot;,
+ &quot;XMjRksnxWssPEINhdhbiLBSYpCLtwNshFjXS&quot;,
+ &quot;HnnDeUAbuswsgsYQuAaXySLkFYUwFXwYTreM&quot;,
+ &quot;uqLnwOEGbwZZDgAAWEdLRZxFlogDmlhjhgHM&quot;,
+ &quot;NcfaQsgPQfirkYDRFrLQpySmBGfRHumKULZf&quot;,
+ &quot;mOpmmgclsxRzXskEywfryqCRyATNoJwnlHiD&quot;,
+ &quot;AnoKoKAjrasttjNlHCROnvTJMhEHlVPVoVMo&quot;,
+ &quot;yegLyIuRkkENFAjwzDoPLKjgUHHEkfzYDIpo&quot;,
+ &quot;EcxRGGfuaBXUFXkSxctJWOLmmVbvoMkWtTvV&quot;,
+ &quot;nBMkOBHgaltEVzfyGxseGhmBscfGIbxFbqRn&quot;,
+ &quot;GvkEcLtqdOofGtsbWDafVMbNdJxsffKDzSiR&quot;,
+ &quot;jhZQUVzTzalrZcebvyqPWtOUUyniBKTWdyLi&quot;,
+ &quot;ODJLQPMdjDdTlxrfGsNmBfeGYjzeXApqKDhJ&quot;,
+ &quot;vlJkWMzdVQujKdLViQClOrJXMTBkuZEasFgg&quot;,
+ &quot;FAsbuzrLVIgaryqXBfuBRAbReleXSSgEKSvt&quot;}</pre></td></tr><tr><td><pre>{&quot;XAhlUHtfjOpOlQlowWppQcodMGUiqoLobxnD&quot;,
+ &quot;IDzGlKrHiVGdBjZxIcoxjwagbWieKvUwZrjg&quot;,
+ &quot;SkpkTVeIFeoNQzUUgmYAYskKONNZdgXxSiWd&quot;,
+ &quot;rXBGhTmqnvxkmqiutoDzPusDiOUggEFXGCzm&quot;,
+ &quot;fzrxVuTbFXunGbeEavjshmrIRlDorTuISCxn&quot;,
+ &quot;LsvIaxTkOBjcskiekmrKNNFEXqnfMNXLWqqu&quot;,
+ &quot;ekzxGIlbJPVEQPYAbTuMtZKsCiubDXDiBVzU&quot;,
+ &quot;hZuOCJxvBOYENGSFcUiKKAKfCdebutVmnyvB&quot;,
+ &quot;UveNkKRQmHnedrROQOpHJfrHjwcNLUShlDbn&quot;,
+ &quot;ptUkvbaGDryHRkYfHKLkSgVpjWCEcgazyxGK&quot;,
+ &quot;nVPYEqTTJsRPjzjfdOiULhnZPFeNcnbXaQlk&quot;,
+ &quot;IPXBXRhMQIkxpygsgbcRfMuvIcuzUPPHGOWX&quot;,
+ &quot;yWWlNyEyqZSIOXBFAybIuFpVqpvmKRaRFrAE&quot;,
+ &quot;EvBJVtHvKhjrFcmtpdBbFTdTVtXXZQKAglKT&quot;,
+ &quot;bCVjHzUvyINFkxXageZQMzCyNhcifACdJVDh&quot;,
+ &quot;lZITYcDSeIbLweyFtoMAfOQyBNupKlhcNpgo&quot;,
+ &quot;BduslNrJdWOUukYFFidEkMFaghfofpxVgvJd&quot;,
+ &quot;YrJpDZKqdjEPzdLsOQEdkcrBfNHPemXHokCW&quot;,
+ &quot;GjeUKSGjDlgKTyUGNrMQbBLxRUcgrWpkAwOD&quot;,
+ &quot;wgxTcswqdJHaDugNIRMvrhBsdDaJAssVbSRW&quot;,
+ &quot;qmVmqFEpvgGioMXDSFqEoQcDOAaUoGPEovSO&quot;,
+ &quot;KrukPlpfOhawaovCfteTSCIdLMrtImVtiMyQ&quot;,
+ &quot;ykwmxHsKMFzFHwcbyyedLvhZPnaNGqJMMCxd&quot;,
+ &quot;HUNYCXjNLQIFCLLGpCXHBCHLTxLynBxnHFbx&quot;,
+ &quot;uwjzbNbJepVFgMPUXVirxYHzExquBEtPmKju&quot;,
+ &quot;xXAxAbJePyUsVHeLytDvAxBGMRtnvCEiZZqe&quot;,
+ &quot;xMkQoIVxWPXPgaOYmDjTOXiMImVdzojERNxS&quot;,
+ &quot;dwICFwMAmdOIUxyAdXdshasnzwyhfnVWVqZJ&quot;,
+ &quot;etypXNVvSTEQvriGBZdSGmDEHhvpSqkFklCS&quot;,
+ &quot;YkxpFBCRYUueRcKaJUXVdaMoYMYEooPQVMOr&quot;,
+ &quot;DTrexDqclZNKdPuTRFHualJSFziCLPCZjpxo&quot;,
+ &quot;TfEijcAsSJPikkmBSbXMqYHAhPTcpcKVSkIX&quot;,
+ &quot;xKXHYPYMJxFpSbxltDKYuRiTkOLxpQKnXZPs&quot;,
+ &quot;YFYuvuYHfpFJcrLNIdlNfBxRnWdppsdalBkx&quot;,
+ &quot;NFTysBvNFjejdnlhRTclbcfGipNCxpFEOriY&quot;,
+ &quot;thkgVflJYmbUYbIlafNUMGePQWiZyYzYXvUR&quot;}
+</pre></td></tr><tr><td><pre>1200</pre></td></tr></table></td></tr><tr><td><pre>Returns: 396065426</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

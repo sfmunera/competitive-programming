@@ -1,0 +1,53 @@
+import java.util.*;
+
+public class OddEvenTree {
+    public int[] getTree(String[] x) {
+        int[] res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(OddEvenTree.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(getTree(new String[] {
+			"EOE",
+			"OEO",
+			"EOE"}),
+			new int[] {0, 1, 2, 1 });
+	}
+
+	public void test1() {
+		RETester.eq(getTree(new String[] {
+			"EO",
+			"OE"}),
+			new int[] {0, 1 });
+	}
+
+	public void test2() {
+		RETester.eq(getTree(new String[] {
+			"OO",
+			"OE"}),
+			new int[] {-1 });
+	}
+
+	public void test3() {
+		RETester.eq(getTree(new String[] {
+			"EO",
+			"EE"}),
+			new int[] {-1 });
+	}
+
+	public void test4() {
+		RETester.eq(getTree(new String[] {
+			"EOEO",
+			"OEOE",
+			"EOEO",
+			"OEOE"}),
+			new int[] {0, 1, 0, 3, 2, 1 });
+	}
+
+// END CUT HERE
+}

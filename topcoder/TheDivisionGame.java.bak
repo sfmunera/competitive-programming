@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class TheDivisionGame {
+    public long countWinningIntervals(int L, int R) {
+        long res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(TheDivisionGame.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(countWinningIntervals(9, 10), 2L);
+	}
+
+	public void test1() {
+		RETester.eq(countWinningIntervals(2, 5), 9L);
+	}
+
+	public void test2() {
+		RETester.eq(countWinningIntervals(2, 6), 13L);
+	}
+
+	public void test3() {
+		RETester.eq(countWinningIntervals(2, 100), 4345L);
+	}
+
+	public void test4() {
+		RETester.eq(countWinningIntervals(12566125, 12567777), 1313432L);
+	}
+
+// END CUT HERE
+}

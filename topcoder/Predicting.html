@@ -1,0 +1,46 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>We would like to be able to predict tomorrow's price of a share of stock.  We 
+have data on past daily prices. Based on that we will make a prediction.
+Our plan is to use a weighted average of the 5 most recent prices as the
+prediction.
+<p>
+We will choose the appropriate weights as the ones that would have best predicted 
+prices in the past.  The weights must
+add up to one to be a weighted average, but some of them may be negative. We
+will restrict consideration to weights that are chosen from the following 21 values:
+</p><pre>
+     -1.0, -0.9, ... , -0.1, 0.0, 0.1, ..., 0.9, 1.0
+</pre>
+We define the &quot;error&quot; of a prediction to be the absolute value of the difference 
+between the prediction and the
+price.We will evaluate a possible weighting by using it to predict each of the
+known prices (except for the first 5, which don't have enough predecessors).
+
+We will then choose the weighting that has the smallest average error for its predictions.
+<p>
+Before we use our weighted averaging scheme to make our fortune on the stock
+market we need to have some idea of how well it predicted past data.  Create a 
+class Predicting that contains a method avgError that will be given a
+double[] <b>data</b> and will return the average error made by our best weighting.
+</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Predicting</td></tr><tr><td>Method:</td><td>avgError</td></tr><tr><td>Parameters:</td><td>double[]</td></tr><tr><td>Returns:</td><td>double</td></tr><tr><td>Method signature:</td><td>double avgError(double[] data)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The returned value must be accurate to within a relative or absolute value of 1E-9.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>data</b> will contain between 6 and 50 elements inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>data</b> will be between 10.0 and 100.0 inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{10,10,10,10,10,10}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0.0</pre></td></tr><tr><td><table><tr><td colspan="2">
+
+   A weighting of .2,.2,.2,.2,.2 will exactly predict the only past price that
+   had 5 predecessors.
+
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{50,10,50,10,50,10,50,10,50,10,50,10}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0.0</pre></td></tr><tr><td><table><tr><td colspan="2">
+
+   A weighting of -1,0,0,1,1 predicts price correctly every time (in the past). 
+   For example, the prediction of the most recent price is 
+   -1*50 + 0*10 + 0*50 + 1*10 + 1*50 = 10 which was exactly right. </td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{50,60,50,60,50,60,60}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 5.0</pre></td></tr><tr><td><table><tr><td colspan="2">The best choice of weights is -1.0,-1.0,1.0,1.0,1.0 which gives a
+prediction of 50 for the next to the last price (-1*50 + -1*60 + 1*50
+ + 1*60 + 1*50 = 50) and a prediction of 60 for the last price (-1*60
+ + -1*50 + 1*60 + 1*50 + 1*60 = 60). So the errors are 10 and 0 for the
+two predictions with an average error of 5.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{82.9102, 70.6848, 21.503, 61.4588, 54.7789,
+ 48.9889, 57.6766, 91.1859, 26.3674, 55.4601,
+ 53.9357, 87.2005, 78.4771, 65.0102, 18.619,
+ 90.296, 26.3894, 53.8588, 91.8369, 58.8028,
+ 74.0577, 28.2406, 65.609, 59.4867, 27.7544,
+ 54.6992, 69.2428, 22.6264, 87.0083, 58.5116,
+ 60.286, 20.4318, 65.6475, 11.8348, 36.3488,
+ 92.8092, 60.7392, 98.124, 48.1292, 39.5459,
+ 52.2657, 34.3519, 38.9279, 93.0152, 11.3157}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 22.0175905</pre></td></tr><tr><td></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

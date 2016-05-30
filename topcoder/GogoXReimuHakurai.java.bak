@@ -1,0 +1,90 @@
+package topcoder;
+
+import java.util.*;
+
+public class GogoXReimuHakurai {
+	
+	int N;
+	boolean[][] adj;
+	List<Integer> sort;
+	boolean[] visited;
+	
+	void dfs(int s) {
+		visited[s] = true;
+		
+		for (int i = 0; i < N; ++i)
+			if (adj[s][i] && !visited[i])
+				dfs(i);
+		sort.add(0, s);
+	}
+	
+	void topsort() {
+		visited = new boolean[N];
+		sort = new ArrayList<Integer>();
+		
+		for (int i = 0; i < N; ++i)
+			if (!visited[i])
+				dfs(i);
+	}
+	
+    public int solve(String[] choices) {
+    	
+    	N = choices.length;
+    	adj = new boolean[N][N];
+    	
+    	for (int i = 0; i < N; ++i)
+    		for (int j = 0; j < N; ++j)
+    			if (choices[i].charAt(j) == 'Y')
+    				adj[i][j] = true;
+    	topsort();
+    	
+    	int[] paths = new int[N];
+    	paths[0] = 0;
+    	
+    	for (int i = 1; i < N; ++i)
+    		for (int j = 0; j < i; ++j)
+    			if (adj[i][j])
+    				paths[i] = paths[j] + 1;
+    	
+    	return paths[N - 1];
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(GogoXReimuHakurai.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(solve(new String[] {
+			"NYY",
+			"NNY",
+			"NNN"}),
+			2);
+	}
+
+	public void test1() {
+		RETester.eq(solve(new String[] {
+			"NYNY",
+			"NNYY",
+			"NNNY",
+			"NNNN"}),
+			3);
+	}
+
+	public void test2() {
+		RETester.eq(solve(new String[] {
+			"NNY"
+			,"NNY"
+			,"NNN"}),
+			1);
+	}
+
+	public void test3() {
+		RETester.eq(solve(new String[] {
+			"NN"
+			,"NN"}),
+			0);
+	}
+
+// END CUT HERE
+}

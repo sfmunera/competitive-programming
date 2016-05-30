@@ -1,0 +1,53 @@
+import java.util.*;
+
+public class SkiResorts {
+    public long minCost(String[] road, int[] altitude) {
+        long res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(SkiResorts.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(minCost(new String[] {
+			"NYN",
+			"YNY",
+			"NYN"},
+			new int[] {30, 20, 10}), 0L);
+	}
+
+	public void test1() {
+		RETester.eq(minCost(new String[] {
+			"NY",
+			"YN"},
+			new int[] {10, 20}), 10L);
+	}
+
+	public void test2() {
+		RETester.eq(minCost(new String[] {
+			"NYN",
+			"YNN",
+			"NNN"},
+			new int[] {573, 573, 573}), -1L);
+	}
+
+	public void test3() {
+		RETester.eq(minCost(new String[] {
+			"NNYNNYYYNN",
+			"NNNNYNYNNN",
+			"YNNNNYYNNN",
+			"NNNNNNYNYY",
+			"NYNNNNNNYY",
+			"YNYNNNNYNN",
+			"YYYYNNNYNN",
+			"YNNNNYYNNN",
+			"NNNYYNNNNN",
+			"NNNYYNNNNN"},
+			new int[] {7, 4, 13, 2, 8, 1, 8, 15, 5, 15}), 12L);
+	}
+
+// END CUT HERE
+}

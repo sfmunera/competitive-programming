@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class FavouriteDigits {
+    public long findNext(long N, int digit1, int count1, int digit2, int count2) {
+        long res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(FavouriteDigits.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(findNext(47L, 1, 0, 2, 0), 47L);
+	}
+
+	public void test1() {
+		RETester.eq(findNext(47L, 5, 0, 9, 1), 49L);
+	}
+
+	public void test2() {
+		RETester.eq(findNext(47L, 5, 0, 3, 1), 53L);
+	}
+
+	public void test3() {
+		RETester.eq(findNext(47L, 2, 1, 0, 2), 200L);
+	}
+
+	public void test4() {
+		RETester.eq(findNext(123456789012345L, 1, 2, 2, 4), 123456789012422L);
+	}
+
+	public void test5() {
+		RETester.eq(findNext(92L, 1, 1, 0, 0), 100L);
+	}
+
+// END CUT HERE
+}

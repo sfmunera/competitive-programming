@@ -1,0 +1,39 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>Air traffic control requires that the routes of aircraft be restricted. We want
+to investigate the costs of requiring aircraft to fly only in a few directions.
+For example, we could require them to fly only north, east, south, or west.  
+<p>
+It makes sense to distribute the allowable directions evenly. If we allow only
+<b>n</b> directions, one will be east and the others will be evenly distributed among
+all other possible directions. So if <b>n</b> is 3, the three directions are east, 30 degrees
+west of north, and 30 degrees west of south. Adjacent directions then differ
+by 120 degrees. Notice that if a direction is legal the opposite direction 
+may not necessarily be legal.
+</p><p>
+The following picture shows a minimum way to fly to a destination which is 5 east and 3 north of the starting point when <b>n</b> is 8. The 8 allowable directions are shown in blue.
+By flying a distance of 3*sqrt(2) northeast, and then 2 east (or 2 east, and then 3*sqrt(2) northeast) we can get to our
+destination by travelling a total distance of 3*sqrt(2) + 2. Notice that for any <b>n</b> and destination 
+the minimal distance can be achieved using no more than two directions.
+</p>
+<p>
+<img src="http://www.topcoder.com/contest/problem/Airways/airways3.gif" width="250" height="250"></img>
+</p>
+<p>
+Create a class Airways that contains a method distance that is given <b>n</b> (the number
+of legal directions), <b>east</b> (the distance eastward to our destination), and <b>north</b> (the
+distance northward to our destination). It returns the minimum distance we will have
+to fly to get to our destination under these requirements.
+</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Airways</td></tr><tr><td>Method:</td><td>distance</td></tr><tr><td>Parameters:</td><td>int, int, int</td></tr><tr><td>Returns:</td><td>double</td></tr><tr><td>Method signature:</td><td>double distance(int n, int east, int north)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The returned value must be accurate to within a relative or absolute value of 1E-9.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>n</b> will be between 3 and 40, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>east</b> and <b>north</b> will be between -5000 and 5000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>3</pre></td></tr><tr><td><pre>-219</pre></td></tr><tr><td><pre>0</pre></td></tr></table></td></tr><tr><td><pre>Returns: 437.99999999999994</pre></td></tr><tr><td><table><tr><td colspan="2">
+
+   We want to go 219 due west. One way to do that is to fly 219 in the direction
+   that is 30 degrees west of due south, then fly 219 in the direction 30 degrees
+   west of due north.  Our path will form 2 sides of an equilateral triangle.
+
+
+
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>3</pre></td></tr><tr><td><pre>171</pre></td></tr><tr><td><pre>0</pre></td></tr></table></td></tr><tr><td><pre>Returns: 171.0</pre></td></tr><tr><td><table><tr><td colspan="2">
+
+   We want to go due east, and that is always an allowed direction.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>4</pre></td></tr><tr><td><pre>233</pre></td></tr><tr><td><pre>3111</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3344.0000000000005</pre></td></tr><tr><td><table><tr><td colspan="2">
+
+   We can go 3111 due north and then 233 east since these are legal directions when <b>n</b> is 4.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>14</pre></td></tr><tr><td><pre>-3840</pre></td></tr><tr><td><pre>-1768</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4243.534462721784</pre></td></tr><tr><td></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

@@ -1,0 +1,109 @@
+package topcoder;
+
+import java.util.*;
+
+public class RadioRange {
+	
+	static class UnionFind {
+		private int[] p;
+		private int[] rank;
+		private int[] size;
+		private int sets;
+		private int N;
+		
+		public UnionFind(int _N) {
+			N = _N;
+			p = new int[N];
+			rank = new int[N];
+			size = new int[N];
+			sets = N;
+			
+			for (int i = 0; i < N; ++i) {
+				p[i] = i;
+				rank[i] = 0;
+				size[i] = 1;
+			}
+		}
+		public int find(int u) {
+			return p[u] == u ? u : (p[u] = find(p[u]));
+		}
+		public void merge(int u, int v) {
+			int pu = find(u);
+			int pv = find(v);
+			if (pu == pv) return;
+			if (rank[pu] < rank[pv]) {
+				size[pv] += size[pu];
+				p[pu] = pv;
+			} else {
+				size[pu] += size[pv];
+				p[pv] = pu;
+			}
+			if (rank[pu] == rank[pv])
+				++rank[pu];
+			--sets;
+		}
+		public boolean isSameSet(int u, int v) {
+			return find(u) == find(v);
+		}
+		public int setSize(int u) {
+			return size[find(u)];
+		}
+		public int sets() {
+			return sets;
+		}
+	}
+	
+    public double RadiusProbability(int[] X, int[] Y, int[] R, int Z) {
+        double maxdist = 0.0;
+        double mindist = Double.MAX_VALUE;
+        int N = X.length;
+        
+        for (int i = 0; i < N; ++i) {
+        	double d = Math.sqrt((long)X[i] * X[i] + (long)Y[i] * Y[i]);
+        	maxdist = Math.max(maxdist, d + R[i]);
+        	mindist = Math.min(mindist, d - R[i]);
+        }
+        mindist = Math.max(mindist, 0.0);
+        
+        return (Math.min(mindist, Z) + Math.max(0.0, Z - maxdist)) / Z;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(RadioRange.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(RadiusProbability(new int[] {0}, new int[] {0}, new int[] {5}, 10), 0.5);
+	}
+
+	public void test1() {
+		RETester.eq(RadiusProbability(new int[] {0}, new int[] {0}, new int[] {10}, 10), 0.0);
+	}
+
+	public void test2() {
+		RETester.eq(RadiusProbability(new int[] {10}, new int[] {10}, new int[] {10}, 10), 0.4142135623730951);
+	}
+
+	public void test3() {
+		RETester.eq(RadiusProbability(new int[] {11, -11, 0, 0}, new int[] {0, 0, 11, -11}, new int[] {10, 10, 10, 10}, 31), 0.3548387096774194);
+	}
+
+	public void test4() {
+		RETester.eq(RadiusProbability(new int[] {100}, new int[] {100}, new int[] {1}, 10), 1.0);
+	}
+
+	public void test5() {
+		RETester.eq(RadiusProbability(new int[] {1000000000}, new int[] {1000000000}, new int[] {1000000000}, 1000000000), 0.41421356237309503);
+	}
+
+	public void test6() {
+		RETester.eq(RadiusProbability(new int[] {20, -20, 0, 0}, new int[] {0, 0, 20, -20}, new int[] {50, 50, 50, 50}, 100), 0.3);
+	}
+
+	public void test7() {
+		RETester.eq(RadiusProbability(new int[] {0, -60, -62, -60, 63, -97}, new int[] {-72, 67, 61, -8, -32, 89}, new int[] {6, 7, 8, 7, 5, 6}, 918), 0.9407071068962471);
+	}
+
+// END CUT HERE
+}

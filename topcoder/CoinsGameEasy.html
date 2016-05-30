@@ -1,0 +1,50 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>We are playing a game with a pair of coins on a rectangular board.
+The board is divided into unit square cells.
+Each cell is either empty, or it contains an obstacle.
+The board is given to you as a String[] <b>board</b>.
+The character '#' represents an obstacle, '.' is an empty cell, and 'o' is an empty cell with a coin.
+You may assume that there are exactly two coins on the board, and that initially they lie in different cells.
+<br></br>
+<br></br>
+<br></br>
+Next to the board, there are 4 buttons labeled "Left", "Right", "Up", and "Down".
+The game is played by pushing these buttons.
+When you push a button, all coins will try to move one cell in the corresponding direction.
+For each coin, there can be three different outcomes:
+<ul>
+<li>If the next cell in the chosen direction contains an obstacle, the coin remains in its current cell.</li>
+<li>If there is no next cell in the chosen direction (i.e., if the coin is already on the corresponding edge of the board), the coin falls off the board.</li>
+<li>In all other cases, the coin moves one cell in the chosen direction. Note that this includes the case when the destination cell currently contains another coin.</li>
+</ul>
+<br></br>
+<br></br>
+<br></br>
+The goal of the game is to make exactly one coin fall off the board.
+If that is impossible, or if you need to push more than 10 buttons in order to achieve the goal, return -1.
+Otherwise, return the smallest number of times you need to push a button in order to achieve the goal.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>CoinsGameEasy</td></tr><tr><td>Method:</td><td>minimalSteps</td></tr><tr><td>Parameters:</td><td>String[]</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int minimalSteps(String[] board)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>There may be some sequences of moves that will cause both coins to end in the same cell. Note that when trying to win the game such moves should be avoided.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain between 1 and 20 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Every element of <b>board</b> will have the same length, and this length will be between 1 and 20, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in each element of <b>board</b> will be one of '#', 'o' and '.'.</td></tr><tr><td align="center" valign="top">-</td><td>There will be exactly 2 'o' in <b>board</b>.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;oo&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">Push the Left button. The left coin will fall, the right one will move one step left and it will still be on the board.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.#&quot;, 
+ &quot;.#&quot;, 
+ &quot;.#&quot;,
+ &quot;o#&quot;,
+ &quot;o#&quot;,
+ &quot;##&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">You need to push the Up button 4 times in a row.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;..&quot;,
+ &quot;..&quot;,
+ &quot;..&quot;,
+ &quot;o#&quot;,
+ &quot;o#&quot;,
+ &quot;##&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2">As in Example 1, this game can be won by pushing the Up button 4 times. However, there is also a shorter solution: push Up, Right, and Right, in this order.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;###&quot;,
+ &quot;.o.&quot;,
+ &quot;###&quot;,
+ &quot;.o.&quot;,
+ &quot;###&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: -1</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;###&quot;,
+ &quot;.o.&quot;,
+ &quot;#.#&quot;,
+ &quot;.o.&quot;,
+ &quot;###&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;###########&quot;,
+ &quot;........#o#&quot;,
+ &quot;###########&quot;,
+ &quot;.........o#&quot;,
+ &quot;###########&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 10</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;############&quot;,
+ &quot;.........#o#&quot;,
+ &quot;############&quot;,
+ &quot;..........o#&quot;,
+ &quot;############&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: -1</pre></td></tr><tr><td><table><tr><td colspan="2">You need at least 11 steps to win the game, so you should return -1.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

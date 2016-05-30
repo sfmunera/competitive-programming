@@ -1,0 +1,98 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>A glossary is an alphabetical list of terms in some specialized field of knowledge, usually published as an appendix to a text on that field.</p>
+
+<p>
+In this problem, you will be given a String[] <b>items</b>, where each element is a single term.  You must build a two column glossary of these terms using the following method:</p>
+<p>
+For each letter 'A'-'Z', if there is at least one term that begins with that letter (case-insensitive), create an entry for the letter in the following format:
+<ol>
+<li>Place the uppercase letter on the first line.</li>
+<li>Place 19 dashes ('-') on the second line.</li>
+<li>Place each term that begins with the letter on a new line, in alphabetical order (again, case-insensitive).  Each term should be preceded by exactly 2 spaces.</li>
+<li>Pad all lines with spaces on the right side until they are exactly 19 characters wide.</li>
+</ol>
+</p>
+
+<p>
+Now, sort these entries alphabetically by their letter, and split them into two columns.  The left column should contain the entries for letters 'A' through 'M', inclusive, and the right column should contain the entries for letters 'N' through 'Z', inclusive.  Each column must be exactly 19 characters wide, and the two columns must be separated by exactly 2 spaces.  See examples for clarification.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Glossary</td></tr><tr><td>Method:</td><td>buildGlossary</td></tr><tr><td>Parameters:</td><td>String[]</td></tr><tr><td>Returns:</td><td>String[]</td></tr><tr><td>Method signature:</td><td>String[] buildGlossary(String[] items)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>Two strings differing only in capitalization are considered the same, for example "aa" and "aA" are same.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>items</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>items</b> will contain between 1 and 17 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>items</b> will contain letters ('A' - 'Z', 'a' - 'z') and spaces (' ') only.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>items</b> will start with a letter.</td></tr><tr><td align="center" valign="top">-</td><td>Each term will appear at most once in <b>items</b>.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;Canada&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Italy&quot;, &quot;Japan&quot;, &quot;Russia&quot;, 
+ &quot;United Kingdom&quot;, &quot;United States&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{&quot;C                    R                  &quot;,
+ &quot;-------------------  -------------------&quot;,
+ &quot;  Canada               Russia           &quot;,
+ &quot;F                    U                  &quot;,
+ &quot;-------------------  -------------------&quot;,
+ &quot;  France               United Kingdom   &quot;,
+ &quot;G                      United States    &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  Germany                               &quot;,
+ &quot;I                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  Italy                                 &quot;,
+ &quot;J                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  Japan                                 &quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">The Group of Eight. Together, these countries represent about 65% of the world economy.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;alpha&quot;, &quot;beta&quot;, &quot;gamma&quot;, &quot;delta&quot;, &quot;omega&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{&quot;A                    O                  &quot;,
+ &quot;-------------------  -------------------&quot;,
+ &quot;  alpha                omega            &quot;,
+ &quot;B                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  beta                                  &quot;,
+ &quot;D                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  delta                                 &quot;,
+ &quot;G                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  gamma                                 &quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;AVL tree&quot;, &quot;backtracking&quot;, &quot;array&quot;, &quot;balanced tree&quot;, &quot;binary search&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{&quot;A                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  array                                 &quot;,
+ &quot;  AVL tree                              &quot;,
+ &quot;B                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  backtracking                          &quot;,
+ &quot;  balanced tree                         &quot;,
+ &quot;  binary search                         &quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">The second column might be empty, but you need to pad each line of the result with spaces.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;XXXXXXXXXXXXXXXXX&quot;, 
+ &quot;YYYYYYYYYYYYYYYYY&quot;,
+ &quot;ZZZZZZZZZZZZZZZZZ&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{&quot;                     X                  &quot;,
+ &quot;                     -------------------&quot;,
+ &quot;                       XXXXXXXXXXXXXXXXX&quot;,
+ &quot;                     Y                  &quot;,
+ &quot;                     -------------------&quot;,
+ &quot;                       YYYYYYYYYYYYYYYYY&quot;,
+ &quot;                     Z                  &quot;,
+ &quot;                     -------------------&quot;,
+ &quot;                       ZZZZZZZZZZZZZZZZZ&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">The first column may be empty too.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;Asteria&quot;, &quot;Astraeus&quot;, &quot;Atlas&quot;, &quot;Clymene&quot;, &quot;Coeus&quot;, &quot;Crius&quot;, 
+ &quot;Cronus&quot;, &quot;Dione&quot;, &quot;Epimetheus&quot;, &quot;Helios&quot;, &quot;Hyperion&quot;, &quot;Iapetus&quot;, 
+ &quot;Leto&quot;, &quot;Mnemosyne&quot;, &quot;Oceanus&quot;, &quot;Ophion&quot;, &quot;Phoebe&quot;, &quot;Prometheus&quot;, 
+ &quot;Rhea&quot;, &quot;Tethys&quot;, &quot;Theia&quot;, &quot;Themis&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{&quot;A                    O                  &quot;,
+ &quot;-------------------  -------------------&quot;,
+ &quot;  Asteria              Oceanus          &quot;,
+ &quot;  Astraeus             Ophion           &quot;,
+ &quot;  Atlas              P                  &quot;,
+ &quot;C                    -------------------&quot;,
+ &quot;-------------------    Phoebe           &quot;,
+ &quot;  Clymene              Prometheus       &quot;,
+ &quot;  Coeus              R                  &quot;,
+ &quot;  Crius              -------------------&quot;,
+ &quot;  Cronus               Rhea             &quot;,
+ &quot;D                    T                  &quot;,
+ &quot;-------------------  -------------------&quot;,
+ &quot;  Dione                Tethys           &quot;,
+ &quot;E                      Theia            &quot;,
+ &quot;-------------------    Themis           &quot;,
+ &quot;  Epimetheus                            &quot;,
+ &quot;H                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  Helios                                &quot;,
+ &quot;  Hyperion                              &quot;,
+ &quot;I                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  Iapetus                               &quot;,
+ &quot;L                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  Leto                                  &quot;,
+ &quot;M                                       &quot;,
+ &quot;-------------------                     &quot;,
+ &quot;  Mnemosyne                             &quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">Titans.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

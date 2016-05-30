@@ -1,0 +1,37 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>In tennis, the two players play games, alternating which player is the server
+in each game.  When a player has won at least 4 points and has won at least 2 more points 
+than his opponent, he has won the game.
+When a player has won at least 6 games and has won at least 2 more games than
+his opponent, he has won the set. 
+<p>
+We have a String[] <b>points</b> that tells us the result 
+of each point in a recent tennis match.  Each character is either 'S' indicating
+that the server won that point, or an 'R' indicating that the returner (the non-server)
+won that point.  There is no significance to the breaks between individual Strings
+in <b>points</b>. All together they represent one sequence of points played in the match.
+</p><p>
+Call the player who serves in the first game Player A and his opponent Player B. We want to know the score in the first set, with the number of
+games won by Player A, then a hyphen ('-'), 
+then the number of
+games won by Player B. The data in
+<b>points</b> may go beyond the end of the first set, in which case the extra data can 
+be ignored. The first set may not yet be completed,
+in which case we want the score to include only the completed games.
+</p><p>
+Create a class TennisSet that contains a method firstSet that is given 
+String[] <b>points</b> and returns the score of the first set as a String. The
+returned String must not contain any extra characters (such as spaces or leading zeros).  
+</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>TennisSet</td></tr><tr><td>Method:</td><td>firstSet</td></tr><tr><td>Parameters:</td><td>String[]</td></tr><tr><td>Returns:</td><td>String</td></tr><tr><td>Method signature:</td><td>String firstSet(String[] points)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>We are NOT using the tiebreaker which is sometimes used when a set reaches 6-6.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>points</b> will contain between 1 and 50 elements inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>points</b> will contain between 1 and 50 characters inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>points</b> will contain only 'S' and 'R'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;SSSSSSSSSSSSSSS&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;2-1&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">
+
+   The first game was won by Player A in four points. Then B served the second game
+   and won it in four points. Then A served again and won 4 points in a row.
+   The fourth game is still in progress (with B ahead by 3 points).
+
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;SS&quot;,&quot;SRSS&quot;,&quot;RRRRR&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;2-0&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">
+
+   Player A won the first game 4 to 1. As receiver in the second game, A also won
+   4 points to 1 point.  Only one point has been played in the third set so far.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;SSSSRRRRSSSSRR&quot;,&quot;RRSSSSRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR&quot;,&quot;R&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;6-0&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">
+   Player A won all the games without losing a single point. There is a lot of extra
+   data that applies to other sets and is ignored.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

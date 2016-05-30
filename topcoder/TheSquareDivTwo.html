@@ -1,0 +1,60 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>John and Brus like puzzles. They have been playing a new game which involves placing checkers on a square board. The board is a grid containing the same number of columns and rows.<br></br>
+<br></br>
+The game begins with John placing checkers on specific cells of the board.  Then, R[i] is calculated for each row i, where R[i] is the number of checkers in the i-th row.  Brus must then move the checkers in such a way that for each column i in the final board, the number of checkers in that column is equal to R[i].  Note that R[i] is calculated for the initial placement of checkers and is not modified afterwards.  In a single turn, Brus can move a checker up, down, left or right into an adjacent empty cell.  He may use as many turns as necessary to reach the goal.<br></br>
+<br></br>
+You are given a String[] <b>board</b>, where the j-th character of the i-th element is uppercase 'C' if the cell at row i, column j contains a checker and '.' otherwise.  Return the final placement of checkers using the same format as the input.  Since there may be many possible final placements, return the one that comes first lexicographically.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>TheSquareDivTwo</td></tr><tr><td>Method:</td><td>solve</td></tr><tr><td>Parameters:</td><td>String[]</td></tr><tr><td>Returns:</td><td>String[]</td></tr><tr><td>Method signature:</td><td>String[] solve(String[] board)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The lexicographically earlier of two String[]s is the one that has the lexicographically earlier String in the first position at which they differ.</td></tr><tr><td align="center" valign="top">-</td><td>The lexicographically earlier of two Strings is the one that has the earlier character (using ASCII ordering) at the first position at which they differ.</td></tr><tr><td align="center" valign="top">-</td><td>In ASCII ordering, a dot character '.' comes before 'C'.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain exactly n elements, where n is between 1 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>board</b> will contain exactly n characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>board</b> will contain only uppercase 'C' or '.' .</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;..&quot;,
+ &quot;C.&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;..&quot;, &quot;.C&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">R[0] is 0. R[1] is 1.
+
+The final placement needs to have 0 checkers in the first column and 1 checker in the last column. Brus can move the checker to two different positions in order to accomplish the goal:
+
+<pre>
+..   .C
+.C , ..
+</pre>
+Note that the first one comes first lexicographically.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;CC&quot;,
+ &quot;.C&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;C.&quot;, &quot;CC&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"><pre>
+CC -> CC -> C.
+.C    C.    CC
+</pre></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.C..&quot;,
+ &quot;CC.C&quot;,
+ &quot;..C.&quot;,
+ &quot;CCCC&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;...C&quot;, &quot;.C.C&quot;, &quot;.C.C&quot;, &quot;CCCC&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;...CCC&quot;,
+ &quot;...CCC&quot;,
+ &quot;...CCC&quot;,
+ &quot;CCC...&quot;,
+ &quot;CCC...&quot;,
+ &quot;CCC...&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;......&quot;, &quot;......&quot;, &quot;......&quot;, &quot;CCCCCC&quot;, &quot;CCCCCC&quot;, &quot;CCCCCC&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.....C&quot;,
+ &quot;....CC&quot;,
+ &quot;...CCC&quot;,
+ &quot;..CCCC&quot;,
+ &quot;.CCCCC&quot;,
+ &quot;CCCCCC&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: {&quot;.....C&quot;, &quot;....CC&quot;, &quot;...CCC&quot;, &quot;..CCCC&quot;, &quot;.CCCCC&quot;, &quot;CCCCCC&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">No move was necessary in this case.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;C.C..C.C..C..C.&quot;,
+ &quot;CCC...C..CCC.C.&quot;,
+ &quot;......CC...CCCC&quot;,
+ &quot;.C..CC.C.C.C.C.&quot;,
+ &quot;C....C.C......C&quot;,
+ &quot;.....C..CCCCC.C&quot;,
+ &quot;CCC.......CCCCC&quot;,
+ &quot;..C.C..C.C...C.&quot;,
+ &quot;CCC....CCC.CC..&quot;,
+ &quot;CC.CCCC.CCCC...&quot;,
+ &quot;.C..C.CC.C.CC.C&quot;,
+ &quot;C.CCCC..CC..C.C&quot;,
+ &quot;.CCCC.CCCCCC...&quot;,
+ &quot;..C...C.CCC.CC.&quot;,
+ &quot;CCCC..CCC.C....&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{&quot;...............&quot;,
+ &quot;...............&quot;,
+ &quot;...............&quot;,
+ &quot;...............&quot;,
+ &quot;...............&quot;,
+ &quot;.........C..C..&quot;,
+ &quot;.........C.CC..&quot;,
+ &quot;.C....C.CCCCC.C&quot;,
+ &quot;.C.C.CC.CCCCCCC&quot;,
+ &quot;CCCC.CC.CCCCCCC&quot;,
+ &quot;CCCC.CCCCCCCCCC&quot;,
+ &quot;CCCCCCCCCCCCCCC&quot;,
+ &quot;CCCCCCCCCCCCCCC&quot;,
+ &quot;CCCCCCCCCCCCCCC&quot;,
+ &quot;CCCCCCCCCCCCCCC&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

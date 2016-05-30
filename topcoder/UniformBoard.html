@@ -1,0 +1,31 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>A square board is divided into <b>N</b> rows by <b>N</b> columns of unit square cells.
+Some cells of the board are empty.
+Each of the other cells contains either an apple or a pear.
+You are given the current state of the board as a String[] <b>board</b>.
+In <b>board</b>, the character '.' denotes an empty cell, 'A' denotes an apple, and 'P' denotes a pear.
+<br></br><br></br>
+You are allowed to perform at most <b>K</b> moves.
+In each move, you can pick up one fruit (an apple or a pear) and place it onto any empty cell.
+(The new cell doesn't have to be adjacent to the old one.)
+Note that you cannot remove fruit from the board, you are only allowed to move it onto different cells.
+<br></br><br></br>
+A rectangular section of the board is called uniform if each cell in the rectangle contains an apple. After you are done moving the fruit, you want to have a uniform rectangle that is as large as possible somewhere on the board.
+Return the largest possible area of such a rectangle. If there are no apples, return 0.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>UniformBoard</td></tr><tr><td>Method:</td><td>getBoard</td></tr><tr><td>Parameters:</td><td>String[], int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int getBoard(String[] board, int K)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>N</b> will be between 1 and 20, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain exactly <b>N</b> elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>board</b> will contain exactly <b>N</b> characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>board</b> will be '.', 'A', or 'P'.</td></tr><tr><td align="center" valign="top">-</td><td><b>K</b> will be between 0 and 1000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;AP&quot;,
+ &quot;.A&quot;}</pre></td></tr><tr><td><pre>0</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">You cannot move anything.
+The largest uniform rectangle on the board is a 1x1 rectangle that consists of a single cell with an apple.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;AP&quot;,
+ &quot;.A&quot;}</pre></td></tr><tr><td><pre>1</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">You are allowed to make one move.
+You can move one of the apples onto the currently empty cell, thus creating a 1x2 rectangle of apples.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;PPP&quot;,
+ &quot;APA&quot;,
+ &quot;A.P&quot;}</pre></td></tr><tr><td><pre>2</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2">In two moves you can create a 1x3 rectangle of apples.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;AAA&quot;,
+ &quot;PPP&quot;,
+ &quot;AAA&quot;}</pre></td></tr><tr><td><pre>10</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2">You are allowed to make at most 10 moves.
+However, you cannot make any moves because there are no empty cells.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.&quot;}</pre></td></tr><tr><td><pre>1000</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;PPAAPA..AP&quot;,
+ &quot;PPA.APAP..&quot;,
+ &quot;..P.AA.PPP&quot;,
+ &quot;P.P..APAA.&quot;,
+ &quot;P.P..P.APA&quot;,
+ &quot;PPA..AP.AA&quot;,
+ &quot;APP..AAPAA&quot;,
+ &quot;P.P.AP...P&quot;,
+ &quot;.P.A.PAPPA&quot;,
+ &quot;..PAPAP..P&quot;}</pre></td></tr><tr><td><pre>10</pre></td></tr></table></td></tr><tr><td><pre>Returns: 15</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

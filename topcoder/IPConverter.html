@@ -1,0 +1,31 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>A computer connected to the internet is identified by an IP address.  The most common way of displaying an IP address is the dotted quad method: four eight-bit (0-255 in base ten) numbers separated by periods.</p>
+
+<p>Someone has given you a possible IP address, but the periods have been removed, leaving only a string of digits.  Write a class IPConverter with a method possibleAddresses that takes a String <b>ambiguousIP</b> containing the digits and returns a String[] containing all the possible IP addresses that can be formed from those digits by inserting three periods to form a dotted quad.  Sort the elements of the return value lexicographically, using their string ordering (the period character precedes all digit characters).</p>
+
+<p>The numbers in each of the four positions can have any integer value between zero and 255, inclusive.  However, a number may not have leading zeroes.  For example, the digits 1902426 can form 1.90.24.26, 19.0.24.26, 190.2.4.26, and other IP addresses (see Example 0).  However, it <i>cannot</i> form 19.02.4.26.</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>IPConverter</td></tr><tr><td>Method:</td><td>possibleAddresses</td></tr><tr><td>Parameters:</td><td>String</td></tr><tr><td>Returns:</td><td>String[]</td></tr><tr><td>Method signature:</td><td>String[] possibleAddresses(String ambiguousIP)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>ambiguousIP</b> will contain between 0 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each character of <b>ambiguousIP</b> will be between '0' and '9', inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;1902426&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{ &quot;1.90.24.26&quot;,
+  &quot;1.90.242.6&quot;,
+  &quot;19.0.24.26&quot;,
+  &quot;19.0.242.6&quot;,
+  &quot;190.2.4.26&quot;,
+  &quot;190.2.42.6&quot;,
+  &quot;190.24.2.6&quot; }</pre></td></tr><tr><td><table><tr><td colspan="2">This is the example from the problem statement.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;000&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: { }</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: { }</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;0186290&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: { &quot;0.18.62.90&quot;,  &quot;0.186.2.90&quot;,  &quot;0.186.29.0&quot; }</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;11111111&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{ &quot;1.1.111.111&quot;,
+  &quot;1.11.11.111&quot;,
+  &quot;1.11.111.11&quot;,
+  &quot;1.111.1.111&quot;,
+  &quot;1.111.11.11&quot;,
+  &quot;1.111.111.1&quot;,
+  &quot;11.1.11.111&quot;,
+  &quot;11.1.111.11&quot;,
+  &quot;11.11.1.111&quot;,
+  &quot;11.11.11.11&quot;,
+  &quot;11.11.111.1&quot;,
+  &quot;11.111.1.11&quot;,
+  &quot;11.111.11.1&quot;,
+  &quot;111.1.1.111&quot;,
+  &quot;111.1.11.11&quot;,
+  &quot;111.1.111.1&quot;,
+  &quot;111.11.1.11&quot;,
+  &quot;111.11.11.1&quot;,
+  &quot;111.111.1.1&quot; }</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;3082390871771742784899852251737850570843857369760&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: { }</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;256255255&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: { &quot;2.56.255.255&quot;,  &quot;25.6.255.255&quot;,  &quot;25.62.55.255&quot; }</pre></td></tr><tr><td></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

@@ -1,0 +1,28 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>You are very happy because you advanced to the next round of a very important programming contest.
+You want your best friend to know how happy you are.
+Therefore, you are going to send him a lot of smile emoticons.
+You are given an int <b>smiles</b>: the exact number of emoticons you want to send.
+<br></br><br></br>
+You have already typed one emoticon into the chat.
+Then, you realized that typing is slow.
+Instead, you will produce the remaining emoticons using copy, paste, and possibly some deleting.
+<br></br><br></br>
+You can only do three different operations:
+<ol>
+<li>Copy all the emoticons you currently have into the clipboard.</li>
+<li>Paste all emoticons from the clipboard.</li>
+<li>Delete one emoticon from the message.</li>
+</ol>
+Each operation takes precisely one second.
+Copying replaces the old content of the clipboard.
+Pasting does not empty the clipboard.
+You are not allowed to copy just a part of the emoticons you already have.
+You are not allowed to delete an emoticon from the clipboard.
+<br></br><br></br>
+Return the smallest number of seconds in which you can turn the one initial emoticon into <b>smiles</b> emoticons.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>EmoticonsDiv1</td></tr><tr><td>Method:</td><td>printSmiles</td></tr><tr><td>Parameters:</td><td>int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int printSmiles(int smiles)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>64</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>smiles</b> will be between 2 and 1000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>2</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">First use copy, then use paste. The first operation copies one emoticon into the clipboard, the second operation pastes it into the message, so now you have two emoticons and you are done.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>4</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">One optimal solution is to copy the initial emoticon and then to paste it three times. Another optimal solution is to copy the one emoticon, paste it, copy the two emoticons you currently have, and paste two more.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>6</pre></td></tr></table></td></tr><tr><td><pre>Returns: 5</pre></td></tr><tr><td><table><tr><td colspan="2"><ol>
+<li>Copy. This puts one emoticon into the clipboard.</li>
+<li>Paste. You now have 2 emoticons in the message.</li>
+<li>Copy. The clipboard now contains 2 emoticons.</li>
+<li>Paste. You now have 4 emoticons in the message.</li>
+<li>Paste. You now have 6 emoticons in the message and you are done.</li>
+</ol></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>18</pre></td></tr></table></td></tr><tr><td><pre>Returns: 8</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>11</pre></td></tr></table></td></tr><tr><td><pre>Returns: 8</pre></td></tr><tr><td><table><tr><td colspan="2">Sometimes we actually do delete an emoticon in the optimal solution.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

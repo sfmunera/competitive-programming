@@ -1,0 +1,122 @@
+
+import java.util.*;
+
+public class LCMSet {
+	
+	class Pair {
+		int min, max;
+		public Pair(int min, int max) {
+			this.min = min;
+			this.max = max;
+		}
+		public String toString() {
+			return "(" + min + ", " + max + ")";
+		}
+	}
+	
+	public String equal(int[] A, int[] B) {
+		TreeMap<Integer, Pair> primesA = new TreeMap<Integer, Pair>();
+		TreeMap<Integer, Pair> primesB = new TreeMap<Integer, Pair>();
+		
+		for (int x : A) {
+			for (int p = 2; p <= x / p; ++p)
+				if (x % p == 0) {
+					int cnt = 0;
+					while (x % p == 0) {
+						++cnt;
+						x /= p;
+					}
+					if (!primesA.containsKey(p))
+						primesA.put(p, new Pair(cnt, cnt));
+					else {
+						Pair pair = primesA.get(p);
+						primesA.put(p, new Pair(Math.min(pair.min, cnt), Math.max(pair.max, cnt)));
+					}
+				}
+			if (x > 1) {
+				if (!primesA.containsKey(x))
+					primesA.put(x, new Pair(1, 1));
+				else {
+					Pair pair = primesA.get(x);
+					primesA.put(x, new Pair(Math.min(pair.min, 1), Math.max(pair.max, 1)));
+				}
+			}
+		}
+			
+		for (int x : B) {
+			for (int p = 2; p <= x / p; ++p)
+				if (x % p == 0) {
+					int cnt = 0;
+					while (x % p == 0) {
+						++cnt;
+						x /= p;
+					}
+					if (!primesB.containsKey(p))
+						primesB.put(p, new Pair(cnt, cnt));
+					else {
+						Pair pair = primesB.get(p);
+						primesB.put(p, new Pair(Math.min(pair.min, cnt), Math.max(pair.max, cnt)));
+					}
+				}
+			if (x > 1) {
+				if (!primesB.containsKey(x))
+					primesB.put(x, new Pair(1, 1));
+				else {
+					Pair pair = primesB.get(x);
+					primesB.put(x, new Pair(Math.min(pair.min, 1), Math.max(pair.max, 1)));
+				}
+			}
+		}
+
+		if (primesA.size() != primesB.size())
+			return "Not equal";
+
+		int n = primesA.size();
+		for (int x : primesA.keySet()) {
+			
+			if (!primesB.containsKey(x))
+				return "Not equal";
+			Pair pA = primesA.get(x);
+			Pair pB = primesB.get(x);
+			if (pA.min != pB.min || pA.max != pB.max)
+				return "Not equal";
+		}
+		
+		return "Equal";
+	}
+
+// BEGIN CUT HERE
+	public static void main(String[] args) {
+		RETester.test(LCMSet.class, "test.*");
+	}
+
+	public void test0() {
+		RETester.eq(equal(new int[] {2,3,4,12}, new int[] {2,3,4,6}), "Equal");
+	}
+
+	public void test1() {
+		RETester.eq(equal(new int[] {4,9}, new int[] {6,36}), "Not equal");
+	}
+
+	public void test2() {
+		RETester.eq(equal(new int[] {2,3,5,7,14,105}, new int[] {2,3,5,6,7,30,35}), "Equal");
+	}
+
+	public void test3() {
+		RETester.eq(equal(new int[] {2,3,5,7,14,105}, new int[] {2,3,5,6,7,30,36}), "Not equal");
+	}
+
+	public void test4() {
+		RETester.eq(equal(new int[] {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}, new int[] {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97}), "Equal");
+	}
+
+	public void test5() {
+		RETester.eq(equal(new int[] {999999999,1953125,512,1000000000}, new int[] {999999999,1953125,512}), "Equal");
+	}
+
+	public void test6() {
+		RETester.eq(equal(new int[] {999999998,999999999,1000000000}, new int[] {999999999,1000000000}), "Not equal");
+	}
+
+// END CUT HERE
+}

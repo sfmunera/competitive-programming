@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class FiveHundredEleven {
+    public String theWinner(int[] cards) {
+        String res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(FiveHundredEleven.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(theWinner(new int[] {3, 5, 7, 9, 510}), "Fox Ciel");
+	}
+
+	public void test1() {
+		RETester.eq(theWinner(new int[] {0, 0, 0, 0}), "Toastman");
+	}
+
+	public void test2() {
+		RETester.eq(theWinner(new int[] {511}), "Toastman");
+	}
+
+	public void test3() {
+		RETester.eq(theWinner(new int[] {5, 58, 192, 256}), "Fox Ciel");
+	}
+
+// END CUT HERE
+}

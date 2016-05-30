@@ -1,0 +1,61 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>DJ Jeipouju likes a single-player music game called <i>BM Mania</i>.
+In this game, the player has a controller with <b>keyCount</b> keys, arranged in a row and conveniently numbered 0 through <b>keyCount</b>-1, in order.
+When starting a game, the player selects a song.
+The game takes the musical score of the song and assigns each note to one of the keys of the controller.
+The goal of the game is to "play" the song by hitting the corresponding keys of the controller at appropriate times.
+<br></br><br></br>
+The player also has a computer screen that shows him the keys he will have to hit in the future.
+During the game, the keys that the player has to hit are shown to the player as <i>lanes</i>:
+For each key of the controller, there is a column on the screen with downwards moving markers, each representing a keystroke.
+Whenever a marker reaches the bottom of the screen, the player must press the corresponding key.
+<br></br><br></br>
+A simple scheme of the game screen with 5 keys is shown below.
+Dashes ('-') represent the markers, equals signs ('=') are the bottom of the screen.
+For convenience, we show the corresponding key numbers below.
+<br></br><br></br>
+<pre>
+   | | | | | |
+   | |-| | | |
+   | |-| | |-|
+   |-| |-|-| |
+   |-| | |-|-|
+   | | |-|-| |
+   |-| | | |-|
+   ===========
+   |0|1|2|3|4|
+</pre>
+<br></br>
+Jeipouju is a pretty good player.
+Recently, he tried to play a difficult song, but he always failed at the same place in the song.
+The reason of his failure was the fact that he was unable to play a combination of keystrokes that appeared in two adjacent lanes.
+However, he can easily play the same combination on any pair of non-adjacent keys.
+<br></br><br></br>
+Luckily for Jeipouju, the game has an option to randomly permute the lanes of a song.
+The figure below shows one possible outcome of activating the random option.
+In the figure, the original lane 0 is now on the key 4, lane 1 moved to key 0, lanes 2 and 3 stayed
+on their respective keys, and lane 4 moved to the key 1.
+<br></br><br></br>
+<pre>
+     original                        permuted
+      song                             lanes
+    | | | | | |                     | | | | | |
+    |-| |-| | |                     | | |-| |-|
+    | |-| | | |                     |-| | | | |
+    |-| | |-| |   random activated  | | | |-|-|
+    | |-| | | |  =================> |-| | | | |
+    |-|-| | | |                     |-| | | |-|
+    |-| | | | |                     | | | | |-|
+    | |-| |-|-|                     |-|-| |-| |
+    ===========                     ===========
+    |0|1|2|3|4|                     |0|1|2|3|4|
+</pre>
+<br></br>
+Jeipouju thinks that there are several pairs of lanes that will cause him to fail if they are assigned to adjacent keys.
+For each i, one such pair is <b>badLane1</b>[i] and <b>badLane2</b>[i].
+More precisely, Jeipouju will win the game if and only if for all i the lanes <b>badLane1</b>[i] and <b>badLane2</b>[i] are assigned to non-adjacent keys.
+<br></br><br></br>
+You are given the int <b>keyCount</b> and two int[]s: <b>badLane1</b> and <b>badLane2</b>. 
+Return the probability that Jeipouju will win the game after the lanes have been randomly permuted.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>RandomOption</td></tr><tr><td>Method:</td><td>getProbability</td></tr><tr><td>Parameters:</td><td>int, int[], int[]</td></tr><tr><td>Returns:</td><td>double</td></tr><tr><td>Method signature:</td><td>double getProbability(int keyCount, int[] badLane1, int[] badLane2)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The permutation of lanes is chosen uniformly at random from the set of all possible permutations.</td></tr><tr><td align="center" valign="top">-</td><td>Your return value must have a relative or an absolute error of less than 1e-9.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>keyCount</b> will be between 5 and 14, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>badLane1</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>badLane2</b> will contain the same number of elements as <b>badLane1</b>.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>badLane1</b> and <b>badLane2</b> will be between 0 and <b>keyCount</b> - 1, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>For all i, <b>badLane1</b>[i] and <b>badLane2</b>[i] will be distinct.</td></tr><tr><td align="center" valign="top">-</td><td>All the pairs of bad lanes will be distinct.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>5</pre></td></tr><tr><td><pre>{0}</pre></td></tr><tr><td><pre>{3}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0.6</pre></td></tr><tr><td><table><tr><td colspan="2">There are 5 keys and only one bad pair.
+The probability that these lanes are assigned to adjacent keys is 4 / (5 choose 2) = 0.4, so the probability that we have a good arrangement is 1 - 0.4 = 0.6.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>5</pre></td></tr><tr><td><pre>{0, 1, 2}</pre></td></tr><tr><td><pre>{1, 2, 0}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0.1</pre></td></tr><tr><td><table><tr><td colspan="2">In a good arrangement, no two of the lanes 0, 1, and 2 may be adjacent.
+Hence they have to be assigned to keys 0, 2, and 4, in some order.
+The probability of this event is (3! * 2!) / 5! = 0.1.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>5</pre></td></tr><tr><td><pre>{2, 2, 2, 2}</pre></td></tr><tr><td><pre>{0, 1, 3, 4}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0.0</pre></td></tr><tr><td><table><tr><td colspan="2">All the pairs of lane 2 and other lanes are bad, so it is impossible to obtain a good arrangement.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>7</pre></td></tr><tr><td><pre>{0, 1, 2}</pre></td></tr><tr><td><pre>{6, 5, 4}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0.3904761904761904</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>7</pre></td></tr><tr><td><pre>{3, 5, 1, 0, 2, 6, 4}</pre></td></tr><tr><td><pre>{0, 2, 4, 6, 1, 5, 3}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0.09166666666666667</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

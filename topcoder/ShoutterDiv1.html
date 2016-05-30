@@ -1,0 +1,47 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+A group of freshman rabbits has recently joined the Eel club.
+No two of the rabbits knew each other.
+Yesterday, each of the rabbits went to the club for the first time.
+For each i, rabbit number i entered the club at the time s[i] and left the club at the time t[i].
+</p>
+<p>
+Each pair of rabbits that was in the club at the same time got to know each other, and they became friends on the social network service Shoutter.
+This is also the case for rabbits who just met for a single moment (i.e., one of them entered the club exactly at the time when the other one was leaving).
+</p>
+<p>
+In Shoutter, each user can post a short message at any time.
+The message can be read by the user's friends.
+The friends can also repost the message, making it visible to their friends that are not friends with the original poster.
+In turn, those friends can then repost the message again, and so on.
+Each message can be reposted in this way arbitrarily many times. 
+If a rabbit wants to repost multiple messages, he must repost each of them separately.
+</p>
+<p>
+Today, each of the rabbits posted a self-introduction to Shoutter.
+Each rabbit would now like to read the self-introductions of all other rabbits (including those that are currently not his friends).
+Compute and return the minimal number of reposts necessary to reach this goal.
+If it is impossible to reach the goal, return -1 instead.
+</p>
+<p>
+As the number of rabbits can be greater than what the TopCoder arena supports, you are given the times s[i] and t[i] encoded in the following form:
+You are given String[]s <b>s1000</b>, <b>s100</b>, <b>s10</b>, and <b>s1</b>.
+Concatenate all elements of <b>s1000</b> to obtain a string S1000.
+In the same way obtain the strings S100, S10, and S1.
+Character i of each of these strings corresponds to the rabbit number i.
+More precisely, these characters are the digits of s[i]:
+we obtain s[i] by converting the string S1000[i]+S100[i]+S10[i]+S1[i] to an integer.
+For example, if S1000[4]='0', S100[4]='1', S10[4]='4', and S1[4]='7', then s[4]=to_integer("0147")=147.
+You are also given String[]s <b>t1000</b>, <b>t100</b>, <b>t10</b>, and <b>t1</b>.
+These encode the times t[i] in the same way.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>ShoutterDiv1</td></tr><tr><td>Method:</td><td>count</td></tr><tr><td>Parameters:</td><td>String[], String[], String[], String[], String[], String[], String[], String[]</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int count(String[] s1000, String[] s100, String[] s10, String[] s1, String[] t1000, String[] t100, String[] t10, String[] t1)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>s1000, s100, s10, s1, t1000, t100, t10</b> and <b>t1</b> will each contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>s1000, s100, s10, s1, t1000, t100, t10</b> and <b>t1</b> will contain the same number of elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>s1000, s100, s10, s1, t1000, t100, t10</b> and <b>t1</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>For each i, the i-th elements of all input variables will all contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in the input variables will be a digit ('0'-'9').</td></tr><tr><td align="center" valign="top">-</td><td>For each i, t[i] will be greater than or equal to s[i].</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;22&quot;, &quot;2&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;, &quot;0&quot;}</pre></td></tr><tr><td><pre>{&quot;11&quot;, &quot;1&quot;}</pre></td></tr><tr><td><pre>{&quot;21&quot;, &quot;4&quot;}</pre></td></tr><tr><td><pre>{&quot;22&quot;, &quot;2&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;, &quot;0&quot;}</pre></td></tr><tr><td><pre>{&quot;11&quot;, &quot;1&quot;}</pre></td></tr><tr><td><pre>{&quot;43&quot;, &quot;6&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">After parsing the input, you will get the following information: Rabbit 0 will enter the room at 2012 and leave the room at 2014. Rabbit 1 will enter the room at 2011 and leave the room at 2013. Rabbit 2 will enter the room at 2014 and leave the room at 2016. Therefore, Rabbit 0 and Rabbit 1 will be friends, and Rabbit 0 and Rabbit 2 will be friends too, but Rabbit 1 and Rabbit 2 won't be friends.
+<br></br>
+<br></br>
+Rabbit 0 can already see the self-introductions of all rabbits, but rabbits 1 and 2 cannot see each other's self-introduction.
+Two actions are needed: First, Rabbit 0 reposts the self-introduction of Rabbit 1, and then Rabbit 0 reposts the self-introduction of Rabbit 2.
+Now everybody can read everything.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;13&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;24&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: -1</pre></td></tr><tr><td><table><tr><td colspan="2">If it is impossible to achieve the goal, return -1.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000&quot;}</pre></td></tr><tr><td><pre>{&quot;1234&quot;}</pre></td></tr><tr><td><pre>{&quot;0000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000&quot;}</pre></td></tr><tr><td><pre>{&quot;2345&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2">The following pairs will be friends: Rabbit 0 and 1, 1 and 2, and 2 and 3. One of the optimal strategies is as follows:
+<ul>
+<li>Rabbit 1 shares introductions of Rabbit 0 and 2.</li>
+<li>Rabbit 2 shares introductions of Rabbit 1 and 3.</li>
+<li>Rabbit 1 shares introduction of Rabbit 3 (this is possible because now Rabbit 3's introduction is shared by Rabbit 2, who is a Rabbit 1's friend).</li>
+<li>Rabbit 2 shares introduction of Rabbit 0 (this is possible because now Rabbit 0's introduction is shared by Rabbit 1, who is a Rabbit 2's friend).</li>
+</ul></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;7626463146&quot;}</pre></td></tr><tr><td><pre>{&quot;0000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;0000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;9927686479&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 18</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;00000000000000000000000000000000000000000000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;00000000000000000000000000000000000000000000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;50353624751857130208544645495168271486083954769538&quot;}</pre></td></tr><tr><td><pre>{&quot;85748487990028258641117783760944852941545064635928&quot;}</pre></td></tr><tr><td><pre>{&quot;00000000000000000000000000000000000000000000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;00000000000000000000000000000000000000000000000000&quot;}</pre></td></tr><tr><td><pre>{&quot;61465744851859252308555855596388482696094965779649&quot;}</pre></td></tr><tr><td><pre>{&quot;37620749792666153778227385275518278477865684777411&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 333</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

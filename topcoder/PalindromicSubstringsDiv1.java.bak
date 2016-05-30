@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class PalindromicSubstringsDiv1 {
+    public double expectedPalindromes(String[] S1, String[] S2) {
+        double res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(PalindromicSubstringsDiv1.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(expectedPalindromes(new String[] {"a","a",""}, new String[] {"a"}), 6.0);
+	}
+
+	public void test1() {
+		RETester.eq(expectedPalindromes(new String[] {"z??"}, new String[] {}), 3.115384615384615);
+	}
+
+	public void test2() {
+		RETester.eq(expectedPalindromes(new String[] {"ab","c"}, new String[] {"??","a?"}), 7.315088757396449);
+	}
+
+	public void test3() {
+		RETester.eq(expectedPalindromes(new String[] {}, new String[] {"?"}), 1.0);
+	}
+
+	public void test4() {
+		RETester.eq(expectedPalindromes(new String[] {"ab?def","?"}, new String[] {"f??a"}), 12.545971779699588);
+	}
+
+// END CUT HERE
+}

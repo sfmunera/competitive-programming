@@ -1,0 +1,33 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><i>NOTE: This problem statement contains images that may not display properly if viewed outside of the applet. </i>
+<br></br>
+<br></br>
+TopCoder Security Agency (TSA) has been hired to secure a network system. In this network, there are several client computers and server computers which for the sake of conciseness will be called clients and servers, respectively. There are several one directional data cables in the network: between clients and from clients to servers. A data path in the network is defined as a series of 2 or more computers C1, C2, C3, ..., CN such that for each i between 1 and N-1, there exists a data cable from Ci to C(i+1). To avoid infinite data loops, the network is acyclic, that is, there does not exist a data path that originates and ends at the same computer. A client C is connected to a server S if there exists a data path originating at C and ending at S.
+<br></br>
+<br></br>
+TSA is going to secure the network by installing data gates on some of the cables. The network is said to be secure if for every pair of connected client and server, there exists at least one data path between them which uses at least one cable on which a data gate is installed.
+<br></br>
+<br></br>
+There are N clients numbered 0 through N-1 and M servers numbered 0 through M-1. The data cables are given as String[] <b>clientCable</b> and String[] <b>serverCable</b>. The j-th character of the i-th element of <b>clientCable</b> is 'Y' if there exists a data cable from client i to client j, or 'N' otherwise. The j-th character of the i-th element of <b>serverCable</b> is 'Y' if there exists a data cable from client i to server j, or 'N' otherwise.
+<br></br>
+<br></br>
+Return the minimum number of data gates that needs to be installed to make the network secure.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>NetworkSecurity</td></tr><tr><td>Method:</td><td>secureNetwork</td></tr><tr><td>Parameters:</td><td>String[], String[]</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int secureNetwork(String[] clientCable, String[] serverCable)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>clientCable</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>clientCable</b> will contain exactly N characters, where N is the number of elements in <b>clientCable</b>.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>clientCable</b> will be 'Y' or 'N'.</td></tr><tr><td align="center" valign="top">-</td><td>The i-th character of the i-th element of <b>clientCable</b> will be 'N'.</td></tr><tr><td align="center" valign="top">-</td><td><b>serverCable</b> will contain the same number of elements as <b>clientCable</b>.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>serverCable</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>serverCable</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>serverCable</b> will be 'Y' or 'N'.</td></tr><tr><td align="center" valign="top">-</td><td>The network will be acyclic as described in the problem statement.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NYN&quot;
+,&quot;NNN&quot;
+,&quot;NYN&quot;}</pre></td></tr><tr><td><pre>{&quot;YN&quot;
+,&quot;YN&quot;
+,&quot;NY&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2"><img src="http://www.topcoder.com/contest/problem/NetworkSecurity/networksecurity.png"></img>
+<br></br>
+All three clients are connected to server 0 and only client 2 is connected to server 1. If the data gates are installed on the two cables as shown in the picture above, then each of the following data paths between a client and server will contain at least one cable on which a data gate is installed: 
+<ul>
+<li>C0->C1->S0</li>
+<li>C1->S0</li>
+<li>C2->C1->S0</li>
+<li>C2->S1</li>
+</ul></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NN&quot;
+,&quot;NN&quot;}</pre></td></tr><tr><td><pre>{&quot;NNN&quot;
+,&quot;NNN&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">No client is connected to any server and hence the network is secure.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;NYNN&quot;
+,&quot;NNNN&quot;
+,&quot;NNNY&quot;
+,&quot;NNNN&quot;}</pre></td></tr><tr><td><pre>{&quot;YYN&quot;
+,&quot;NNN&quot;
+,&quot;NNY&quot;
+,&quot;NNN&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

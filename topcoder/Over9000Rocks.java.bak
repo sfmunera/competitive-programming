@@ -1,0 +1,87 @@
+
+import java.util.*;
+
+public class Over9000Rocks {
+	
+	class Pair implements Comparable<Pair> {
+
+		int l, u;
+		
+		public Pair(int l, int u) {
+			this.l = l;
+			this.u = u;
+		}
+		
+		public int compareTo(Pair p) {
+			if (this.l != p.l)
+				return this.l - p.l;
+			return this.u - p.u;
+		}
+		
+		public String toString() {
+			return "{" + this.l + ", " + this.u + "}";
+		}
+	}
+	
+    public int countPossibilities(int[] lowerBound, int[] upperBound) {
+    	int n = lowerBound.length;
+    	Pair[] pairs = new Pair[1 << n];
+    	for (int i = 0; i < (1 << n); ++i) {
+    		int min = 0;
+			int max = 0;
+    		for (int j = 0; j < n; ++j) {
+    			if ((i & (1 << j)) != 0) {
+    				min += lowerBound[j];
+    				max += upperBound[j];
+    			}
+    		}
+    		pairs[i] = new Pair(min, max);
+    	}
+    	
+    	Arrays.sort(pairs);
+    	//System.out.println(Arrays.toString(pairs));
+    	int res = 0;
+    	int lo = pairs[0].l;
+    	//System.out.println(1<<n);
+    	for (int i = 1; i < (1 << n); ++i) {
+    		if (pairs[i - 1].u <= pairs[i].l) {
+    			if (pairs[i - 1].u > 9000) {
+    				res += pairs[i - 1].u - Math.max(lo, 9001) + 1;
+    			}
+    			lo = pairs[i].l;
+    		}
+    	}
+    	if (pairs[(1 << n) - 1].u > 9000) {
+			res += pairs[(1 << n) - 1].u - Math.max(lo, 9001) + 1;
+		}
+    	
+    	return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(Over9000Rocks.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(countPossibilities(new int[] {9000}, new int[] {9001}), 1);
+	}
+
+	public void test1() {
+		RETester.eq(countPossibilities(new int[] {9000, 1, 10}, new int[] {9000, 2, 20}), 15);
+	}
+
+	public void test2() {
+		RETester.eq(countPossibilities(new int[] {1001, 2001, 3001, 3001}, new int[] {1003, 2003, 3003, 3003}), 9);
+	}
+
+	public void test3() {
+		RETester.eq(countPossibilities(new int[] {9000,90000,1,10}, new int[] {9000,90000,3,15}), 38);
+	}
+
+	public void test4() {
+		RETester.eq(countPossibilities(new int[] {1,1,1,1,1,1}, new int[] {3,4,5,6,7,8}), 0);
+	}
+
+// END CUT HERE
+}

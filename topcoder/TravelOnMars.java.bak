@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class TravelOnMars {
+    public int minTimes(int[] range, int startCity, int endCity) {
+        int res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void main(String[] args) {
+        RETester.test(TravelOnMars.class, "test.*");
+    }
+
+	public void test0() {
+		RETester.eq(minTimes(new int[] {2,1,1,1,1,1}, 1, 4), 2);
+	}
+
+	public void test1() {
+		RETester.eq(minTimes(new int[] {2,1,1,1,1,1}, 4, 1), 3);
+	}
+
+	public void test2() {
+		RETester.eq(minTimes(new int[] {2,1,1,2,1,2,1,1}, 2, 6), 3);
+	}
+
+	public void test3() {
+		RETester.eq(minTimes(new int[] {3,2,1,1,3,1,2,2,1,1,2,2,2,2,3}, 6, 13), 4);
+	}
+
+// END CUT HERE
+}

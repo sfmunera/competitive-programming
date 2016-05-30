@@ -1,0 +1,26 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>Fox Ciel is writing an AI for the game Starcraft and she needs your help.
+<br></br>
+<br></br>
+In Starcraft, one of the available units is a mutalisk.
+Mutalisks are very useful for harassing Terran bases.
+Fox Ciel has one mutalisk.
+The enemy base contains one or more Space Construction Vehicles (SCVs).
+Each SCV has some amount of hit points.
+<br></br>
+<br></br>
+When the mutalisk attacks, it can target up to three different SCVs.
+<ol>
+<li>The first targeted SCV will lose 9 hit points.</li>
+<li>The second targeted SCV (if any) will lose 3 hit points.</li>
+<li>The third targeted SCV (if any) will lose 1 hit point.</li>
+</ol>
+If the hit points of a SCV drop to 0 or lower, the SCV is destroyed.
+Note that you may not target the same SCV twice in the same attack.
+<br></br>
+<br></br>
+You are given a int[] <b>x</b> containing the current hit points of your enemy's SCVs.
+Return the smallest number of attacks in which you can destroy all these SCVs.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>Mutalisk</td></tr><tr><td>Method:</td><td>minimalAttacks</td></tr><tr><td>Parameters:</td><td>int[]</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int minimalAttacks(int[] x)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>x</b> will contain between 1 and 20 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element in <b>x</b> will be between 1 and 60, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{12,10,4}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">You can destroy all SCVs in two attacks as follows:
+<ol>
+<li>Target the SCVs in the order 0, 2, 1. Their hit points after the attack will be {12-9, 10-1, 4-3} = {3, 9, 1}.</li>
+<li>Target the SCVs in the order 1, 0, 2. Their hit points will drop exactly to {0, 0, 0}.</li>
+</ol></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{54,18,6}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2">You should attack 6 times, always in the order 0, 1, 2.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,1,1,1,1,1,1,1,1,1}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">There are 10 SCVs, each with just a single hit point. Your attack can kill only three of them, therefore at least 4 attacks are needed.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{55,60,53}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 13</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{60}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 7</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 93</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

@@ -1,0 +1,43 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>Tanya has a rectangular table filled with letters.</p>
+
+<p>First, she makes four copies of this table, and arranges the copies as a 2&times;2 rectangle.</p>
+
+<p>Then she lists all subrectangles of the resulting table.</p>
+
+<p>For example, for the following original table:</p>
+<pre>OK</pre>
+<p>she will arrange the copies like this:</p>
+<pre>
+OKOK
+OKOK
+</pre>
+and then she will list the following 30 subrectangles (dots for clarity only):
+<pre>
+OKOK .... OKOK OKO. .... OKO. .KOK .... .KOK
+OKOK OKOK .... OKO. OKO. .... .KOK .KOK ....
+
+OK.. .... OK.. .KO. .... .KO. ..OK .... ..OK 
+OK.. OK.. .... .KO. .KO. .... ..OK ..OK .... 
+
+O... .... O... .K.. .... .K.. ..O. .... ..O. ...K .... ...K 
+O... O... .... .K.. .K.. .... ..O. ..O. .... ...K ...K ....
+</pre>
+<p>(Note that she is considering all subrectangles based on their positions rather than their content, so the same subrectangle might appear multiple times in the list.  In this case, subrectangle "K" appears four times because it occurs at four different positions.)</p>
+
+<p>Tanya wonders how frequently each letter of the alphabet occurs among all these subrectangles.  You are given a String[] <b>table</b>, where the j-th character of the i-th element is the letter at row i, column j of the original table.  Return a long[] containing exactly 26 elements, where the i-th element is the number of occurrences of the i-th letter in the alphabet among all of Tanya's subrectangles.  'A' is the 0-th letter, 'B' is the 1-st letter, etc.</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>SubrectanglesOfTable</td></tr><tr><td>Method:</td><td>getQuantity</td></tr><tr><td>Parameters:</td><td>String[]</td></tr><tr><td>Returns:</td><td>long[]</td></tr><tr><td>Method signature:</td><td>long[] getQuantity(String[] table)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>table</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>table</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>table</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>table</b> will contain only uppercase letters ('A'-'Z').</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;OK&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0 }</pre></td></tr><tr><td><table><tr><td colspan="2">The 30 Tanya's rectangles are listed above. There is a total of 40 Ks and 40 Os in these rectangles.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;GOOD&quot;, &quot;LUCK&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{0, 0, 320, 280, 0, 0, 280, 0, 0, 0, 280, 280, 0, 0, 640, 0, 0, 0, 0,
+ 0, 320, 0, 0, 0, 0, 0 }</pre></td></tr><tr><td><table><tr><td colspan="2">The four copies form the following table:
+<pre>GOODGOOD
+LUCKLUCK
+GOODGOOD
+LUCKLUCK</pre>
+
+Tanya lists 360 rectangles that contain a total of 320 Cs, 280 Ds, 280 Gs, 280 Ks, 280 Ls, 640 Os, and 320 Us.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;TANYA&quot;,
+ &quot;HAPPY&quot;,
+ &quot;BIRTH&quot;,
+ &quot;DAYYY&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 
+{5168, 1280, 0, 1120, 0, 0, 0, 2560, 1472, 0, 0, 0, 0, 1344, 0, 3008,
+ 0, 1536, 0, 2592, 0, 0, 0, 0, 6320, 0 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

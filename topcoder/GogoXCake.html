@@ -1,0 +1,45 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>Like all other software engineers, Gogo likes to cut and eat cake. He used a rectangular baking dish to make a cake. The dish is divided into a grid of unit square cells. Initially, all the cells contained the cake.</p>
+<br></br>
+<p>Gogo's friend John wanted to eat the cake. Gogo gave John a rectangular cake cutter with the following properties:</p>
+<ul>
+<li>The cake cutter is divided into a grid of cells. The cells are of the same size as the cells of the dish.</li>
+<li>The cake cutter contains cells of two types: <i>used</i> cells and <i>ignored</i> cells.</li>
+<li>Each of the first row, the last row, the first column, and the last column of the cutter contains at least one used cell.</li>
+</ul>
+<p>When used, the cake cutter must be placed on the dish according to the following rules:</p>
+<ul>
+<li>Each cell of the cutter must contain a single cell of the dish.</li>
+<li>It is not allowed to flip or rotate the cutter. Rows and columns of the cutter must correspond to some consecutive rows and some consecutive columns of the dish in the given orientation. (See the last two examples.)</li>
+<li>Each <i>used</i> cell of the cutter must be placed onto a cell that still contains cake. The ignored cells may be placed onto any cells.</li>
+</ul>
+<img src="http://community.topcoder.com/contest/problem/GogoXCake/pic1.gif"></img>
+<p>When the cake cutter is used in the way described above, it removes the cake from all the used cells. John may have used the cake cutter multiple times, one after another.</p>
+<br></br>
+<p>After John went home, Gogo examined the cake that remained in the dish. He now wants to check whether John really cut the cake according to the above rules. You are given String[]s <b>cake</b> and <b>cutter</b>. The remaining cake is described by <b>cake</b>. More precisely, <b>cake</b>[i][j] is 'X' if the cell in the i-th row and j-th column of the dish still contains cake; otherwise <b>cake</b>[i][j] is '.' (a period). The cake cutter is described by <b>cutter</b>. More precisely, <b>cutter</b>[i][j] is '.' (a period) if the cell in the i-th row and j-th column of the cutter is used, and 'X' if the cell is ignored.</p>
+<br></br>
+<p>Return "YES" (quotes for clarity) if it is possible that John only ate the cake by using the cutter in the way described above. Return "NO" otherwise.</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>GogoXCake</td></tr><tr><td>Method:</td><td>solve</td></tr><tr><td>Parameters:</td><td>String[], String[]</td></tr><tr><td>Returns:</td><td>String</td></tr><tr><td>Method signature:</td><td>String solve(String[] cake, String[] cutter)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The used cells in the cutter do not have to be contiguous.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>cake</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>cake</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>cake</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in each element of <b>cake</b> will be either '.' or 'X'.</td></tr><tr><td align="center" valign="top">-</td><td>There will be at least one '.' in <b>cake</b></td></tr><tr><td align="center" valign="top">-</td><td><b>cutter</b> will contain between 1 and R elements, inclusive, where R is the number of elements in <b>cake</b>.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>cutter</b> will contain between 1 and C characters, inclusive, where C is the number of characters in each element of <b>cake</b>.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>cutter</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in each element of <b>cutter</b> will be either '.' or 'X'.</td></tr><tr><td align="center" valign="top">-</td><td>Each of the first row, the first column, the last row, and the last column of the cutter will contain at least one '.'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;X.X&quot;
+,&quot;...&quot;
+,&quot;...&quot;
+,&quot;X.X&quot;}</pre></td></tr><tr><td><pre>{&quot;.X&quot;
+,&quot;..&quot;
+,&quot;X.&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;YES&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"><img src="http://community.topcoder.com/contest/problem/GogoXCake/pic2.gif"></img></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;..XX&quot;
+,&quot;...X&quot;
+,&quot;X...&quot;
+,&quot;XX..&quot;}</pre></td></tr><tr><td><pre>{&quot;..&quot;
+,&quot;..&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;NO&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;...X...&quot;}</pre></td></tr><tr><td><pre>{&quot;...&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;YES&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.X.&quot;
+,&quot;X.X&quot;
+,&quot;.X.&quot;}</pre></td></tr><tr><td><pre>{&quot;.&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;YES&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;XXXXXXX&quot;
+,&quot;X.....X&quot;
+,&quot;X.....X&quot;
+,&quot;X.....X&quot;
+,&quot;XXXXXXX&quot;}</pre></td></tr><tr><td><pre>{&quot;.X.&quot;
+,&quot;XXX&quot;
+,&quot;.X.&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;NO&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;..&quot;
+,&quot;X.&quot;
+,&quot;.X&quot;}</pre></td></tr><tr><td><pre>{&quot;..&quot;
+,&quot;.X&quot;
+,&quot;X.&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;NO&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">You may not flip the cutter.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;X..&quot;
+,&quot;.XX&quot;
+,&quot;.XX&quot;}</pre></td></tr><tr><td><pre>{&quot;.XX&quot;
+,&quot;.XX&quot;
+,&quot;X..&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;NO&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">You may not rotate the cutter.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

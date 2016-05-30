@@ -1,0 +1,51 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>Manao has a matrix X with 1,000,000,000 rows and <b>W</b> columns. He likes to fill it with characters; he even has developed an algorithm for this task. First, he chooses a string S consisting of at most <b>W</b> lowercase letters. The string S is called the generator. Then, he applies the algorithm described by the following pseudocode:
+<pre>
+cur := 0
+for i := 0 to 999999999
+  for j := 0 to W - 1
+    X[i][j] := S.charAt(cur)
+    cur := (cur + 1) mod length(S)
+</pre>
+<br></br>
+Manao has recently found a matrix X in his notepad.
+He wonders whether it was generated using the above algorithm.
+You are given:
+<ul>
+<li>a String[] <b>fragment</b> that contains a rectangular submatrix of X,</li>
+<li>the int <b>W</b>: the width of X,</li>
+<li>and two ints <b>i0</b> and <b>j0</b>: the coordinates of the upper left corner of your submatrix within X.</li>
+</ul>
+In other words, for all valid i, j we have <b>fragment</b>[i][j] = X[i + <b>i0</b>][j + <b>j0</b>].
+Count how many different generators Manao could have used to create a matrix X that contains the fragment you were given.
+Return this number modulo 1,000,000,009.
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>CharacterBoard</td></tr><tr><td>Method:</td><td>countGenerators</td></tr><tr><td>Parameters:</td><td>String[], int, int, int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int countGenerators(String[] fragment, int W, int i0, int j0)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>fragment</b> will contain N elements, where N is between 1 and 10, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>fragment</b> will be M characters long, where M is between 1 and 10, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>fragment</b> will consist of lowercase letters ('a'-'z') only.</td></tr><tr><td align="center" valign="top">-</td><td><b>W</b> will be between M and 1,000,000,000, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>i0</b> will be between 0 and 1,000,000,000 - N, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>j0</b> will be between 0 and <b>W</b> - M, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;dea&quot;,
+ &quot;abc&quot;}
+</pre></td></tr><tr><td><pre>7</pre></td></tr><tr><td><pre>1</pre></td></tr><tr><td><pre>1</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">Manao has a matrix with 1000000000 rows and 7 columns. We know that it looks as follows:
+<br></br>
+<pre>
+???????
+?dea???
+?abc???
+???????
+...
+</pre>
+<br></br>
+The only string of length at most 7 which could generate such matrix is "abcde".
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;xyxxy&quot;}
+</pre></td></tr><tr><td><pre>6</pre></td></tr><tr><td><pre>1</pre></td></tr><tr><td><pre>0</pre></td></tr></table></td></tr><tr><td><pre>Returns: 28</pre></td></tr><tr><td><table><tr><td colspan="2">The given information is:
+<pre>
+??????
+xyxxy?
+??????
+...
+</pre>
+<br></br>
+The corresponding generator could be "xyx", "yxyxx", or a string of form "xyxxy?", where '?' stands for any lowercase letter.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;gogogo&quot;,
+ &quot;jijiji&quot;,
+ &quot;rarara&quot;}
+</pre></td></tr><tr><td><pre>6</pre></td></tr><tr><td><pre>0</pre></td></tr><tr><td><pre>0</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">No generator could create this matrix using the given algorithm.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;abababacac&quot;,
+ &quot;aaacacacbb&quot;,
+ &quot;ccabababab&quot;}
+</pre></td></tr><tr><td><pre>8827</pre></td></tr><tr><td><pre>104</pre></td></tr><tr><td><pre>6022</pre></td></tr></table></td></tr><tr><td><pre>Returns: 829146844</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
