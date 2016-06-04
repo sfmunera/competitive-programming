@@ -3,20 +3,21 @@ package codeforces;
 import java.io.*;
 import java.util.*;
 
-public class A {
+public class VanyaAndFence {
 	public static void main(String[] args) {
 		InputReader in = new InputReader(System.in);
 		
-		StringBuilder sb = new StringBuilder();
-		for (int i = 1; i <= 1000; ++i) {
-			sb.append(i);
+		int n = in.nextInt();
+		int h = in.nextInt();
+		
+		int ans = 0;
+		for (int i = 0; i < n; ++i) {
+			int a = in.nextInt();
+			++ans;
+			if (a > h) ++ans;
 		}
 		
-		String str = sb.toString();
-		
-		int n = in.nextInt();
-		
-		System.out.println(str.charAt(n - 1));
+		System.out.println(ans);
 	}
 	
 
