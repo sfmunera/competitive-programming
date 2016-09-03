@@ -2,7 +2,7 @@ package bapc;
 
 import java.util.*;
 
-public class Ga {
+public class EAPC15D_Ga {
 	
 	static class Position {
 		int r, c;

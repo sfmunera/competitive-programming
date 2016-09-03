@@ -3,7 +3,7 @@ package bapc;
 import java.util.*;
 import java.io.*;
 
-public class FlyingSafely {
+public class BAPC13F_FlyingSafely {
 	
 	static class UnionFind {
 		private int[] p;

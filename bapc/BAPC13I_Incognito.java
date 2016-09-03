@@ -3,7 +3,7 @@ package bapc;
 import java.util.*;
 import java.io.*;
 
-public class Incognito {
+public class BAPC13I_Incognito {
 	public static void main(String[] args) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer stk;

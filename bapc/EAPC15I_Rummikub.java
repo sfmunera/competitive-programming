@@ -2,7 +2,7 @@ package bapc;
 
 import java.util.*;
 
-public class Rummikub {
+public class EAPC15I_Rummikub {
 	
 	static final int MAX_VALUE = 100;
 	

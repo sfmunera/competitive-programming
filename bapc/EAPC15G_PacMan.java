@@ -2,7 +2,7 @@ package bapc;
 
 import java.util.*;
 
-public class PacMan {
+public class EAPC15G_PacMan {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		

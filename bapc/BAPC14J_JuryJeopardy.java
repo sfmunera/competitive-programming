@@ -1,7 +1,8 @@
+package bapc;
 import java.util.*;
 import java.io.*;
 
-public class JuryJeopardy {
+public class BAPC14J_JuryJeopardy {
 	
 	static final int MAX = 201;
 	static int[] dr = {0, 1, 0, -1}; // ESWN

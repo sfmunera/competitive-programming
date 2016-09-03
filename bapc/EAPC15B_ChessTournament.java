@@ -2,7 +2,7 @@ package bapc;
 
 import java.util.*;
 
-public class ChessTournament {
+public class EAPC15B_ChessTournament {
 
 	final static int MODULO = (int) 1e8;
 

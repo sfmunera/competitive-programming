@@ -2,7 +2,7 @@ package bapc;
 
 import java.util.*;
 
-public class ManhattanPowerFailure {
+public class EAPC15F_ManhattanPowerFailure {
 
 	static class Vertex {
 		int id, group;

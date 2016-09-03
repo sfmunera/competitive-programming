@@ -1,7 +1,8 @@
+package bapc;
 import java.util.*;
 import java.io.*;
 
-public class InterestingIntegers {
+public class BAPC14I_InterestingIntegers {
 	
 	static final int MAX_FIB = 46;
 	

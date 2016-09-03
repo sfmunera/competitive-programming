@@ -1,7 +1,8 @@
+package bapc;
 import java.util.*;
 import java.io.*;
 
-public class DroppingDirections {
+public class BAPC14D_DroppingDirections {
 	
 	static class State {
 		int node, dir;

@@ -3,7 +3,7 @@ package bapc;
 import java.util.*;
 import java.io.*;
 
-public class AdministrativeDifficulties {
+public class BAPC13A_AdministrativeDifficulties {
 	
 	static class Car {
 		String name;
