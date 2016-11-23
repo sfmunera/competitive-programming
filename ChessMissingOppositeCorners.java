@@ -1,11 +1,14 @@
 public class ChessMissingOppositeCorners {
 	
 	static final int SIZE = 8;
+	static final int FIRST_ROW_MASK = 1 << 0;         // #.......
+	static final int LAST_ROW_MASK = 1 << (SIZE - 1); // .......#
+	static final int EMPTY_ROW_MASK = 0;              // ........
 	
 	static Integer[][][][] dp;
 	
-	static boolean hasTile(int rowMask, int col) {
-		return (rowMask & (1 << col)) > 0;
+	static boolean isFree(int rowMask, int col) {
+		return (rowMask & (1 << col)) == 0;
 	}
 	
 	static int putTile(int rowMask, int col) {
@@ -17,10 +20,10 @@ public class ChessMissingOppositeCorners {
 			row++;
 			col = 0;
 			rowMask = nextMask;
-			nextMask = row == SIZE - 2 ? (1 << (SIZE - 1)) : 0;
+			nextMask = row == SIZE - 2 ? LAST_ROW_MASK : EMPTY_ROW_MASK;
 		}
 		if (row == SIZE - 1 && col == SIZE - 1) {
-			return hasTile(rowMask, col) ? 1 : 0;
+			return isFree(rowMask, col) ? 0 : 1;
 		}
 		if (row == SIZE) {
 			return 0;
@@ -32,16 +35,16 @@ public class ChessMissingOppositeCorners {
 		
 		int ways = 0;
 		
-		if (hasTile(rowMask, col)) {
+		if (!isFree(rowMask, col)) {
 			ways += countWays(rowMask, nextMask, row, col + 1);
 		} else {
 			//put tile horizontally
-			if (col < SIZE - 1 && !hasTile(rowMask, col) && !hasTile(rowMask, col + 1)) {
+			if (col < SIZE - 1 && isFree(rowMask, col) && isFree(rowMask, col + 1)) {
 				ways += countWays(putTile(putTile(rowMask, col), col + 1), nextMask, row, col + 1);
 			}
 			
 			//put tile vertically
-			if (row < SIZE - 1 && !hasTile(rowMask, col) && !hasTile(nextMask, col)) {
+			if (row < SIZE - 1 && isFree(rowMask, col) && isFree(nextMask, col)) {
 				ways += countWays(putTile(rowMask, col), putTile(nextMask, col), row, col + 1);
 			}
 		}
@@ -51,6 +54,6 @@ public class ChessMissingOppositeCorners {
 	
 	public static void main(String[] args) {
 		dp = new Integer[(1 << SIZE) + 1][(1 << SIZE) + 1][SIZE + 1][SIZE + 1];
-		System.out.println(countWays(1 << 0, 0, 0, 0));
+		System.out.println(countWays(FIRST_ROW_MASK, EMPTY_ROW_MASK, 0, 0));
 	}
 }
