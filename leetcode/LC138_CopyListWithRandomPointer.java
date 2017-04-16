@@ -2,15 +2,15 @@ package leetcode;
 
 import java.util.*;
 
-/**
- * Definition for singly-linked list with a random pointer.
- * class RandomListNode {
- *     int label;
- *     RandomListNode next, random;
- *     RandomListNode(int x) { this.label = x; }
- * };
- */
 public class LC138_CopyListWithRandomPointer {
+    /**
+     * Definition for singly-linked list with a random pointer.*/
+    class RandomListNode {
+        int label;
+        RandomListNode next, random;
+        RandomListNode(int x) { this.label = x; }
+    }
+
     public RandomListNode copyRandomList(RandomListNode head) {
         
         if (head == null)
