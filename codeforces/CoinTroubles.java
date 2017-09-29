@@ -13,19 +13,22 @@ public class CoinTroubles {
 	static Integer[][] dp;
 	static boolean[][] greater;
 	
-	static int go(int index, int t) {
-		if (index < 0 || t < 0)
+	static int solve(int index, int t) {
+		if (t < 0) {
 			return 0;
-		if (t == 0)
-			return 1;
+		}
+		if (index == types.length) {
+			return t == 0 ? 1 : 0;
+		}
 		
-		if (dp[index][t] != null)
+		if (dp[index][t] != null) {
 			return dp[index][t];
+		}
 		
 		int ans = 0;
-		ans += go(index - 1, t);
+		ans += solve(index + 1, t);
 		ans %= MOD;
-		ans += go(index, t - types[index]);
+		ans += solve(index, t - types[index]);
 		ans %= MOD;
 		
 		return dp[index][t] = ans;
@@ -33,7 +36,6 @@ public class CoinTroubles {
 	
 	public static void main(String[] args) {
 		InputReader in = new InputReader(System.in);
-		
 		
 		int n = in.nextInt();
 		int q = in.nextInt();
@@ -53,7 +55,7 @@ public class CoinTroubles {
 			
 			greater[b][c] = true;
 		}
-		System.out.println(go(n - 1, t));
+		System.out.println(solve(0, t));
 	}
 	
 	static class InputReader {
