@@ -3,11 +3,13 @@ package leetcode;
 import java.util.*;
 
 public class LC349_IntersectionOfTwoArrays {
-	public int[] intersection(int[] nums1, int[] nums2) {
+    
+    // Time: O(max(N lg N, N1 + N2)), Space: O(1) [does not include input/output data structures]
+    // N : max(N1, N2)
+	public int[] intersection1(int[] nums1, int[] nums2) {
 		List<Integer> ansList = new ArrayList<>();
 		Arrays.sort(nums1);
 		Arrays.sort(nums2);
-
 
 		int i = 0;
 		int j = 0;
@@ -33,4 +35,28 @@ public class LC349_IntersectionOfTwoArrays {
 		}
 		return ans;
 	}
+	
+	// Time: O(N), Space: O(N)
+    public static int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> seen = new HashSet<>();
+        for (int x : nums1) {
+            seen.add(x);
+        }
+        List<Integer> intersection = new ArrayList<>();
+        for (int x : nums2) {
+            if (seen.contains(x)) {
+                intersection.add(x);
+                seen.remove(x);
+            }
+        }
+        int[] result = new int[intersection.size()];
+        for (int i = 0; i < intersection.size(); i++) {
+            result[i] = intersection.get(i);
+        }
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(intersection(new int[]{1, 2, 2, 1}, new int[]{2, 2})));
+    }
 }

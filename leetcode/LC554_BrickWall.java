@@ -1,37 +1,9 @@
-package leetcode;
-
 import java.util.*;
 
 public class LC554_BrickWall {
-    
-    // Time: O(B), Space: O(B)
-    public int leastBricks(List<List<Integer>> wall) {
-        if (wall == null || wall.isEmpty()) {
-            return 0;
-        }
-        int height = wall.size();
-        int width = 0;
-        for (int brickWidth : wall.get(0)) width += brickWidth;
-        
-        Map<Integer, Integer> positionCount = new HashMap<>();
-        for (List<Integer> row : wall) {
-            int position = 0;
-            for (int brickWidth : row) {
-                position += brickWidth;
-                if (!positionCount.containsKey(position)) positionCount.put(position, 0);
-                positionCount.put(position, positionCount.get(position) + 1);
-            }
-        }
-        positionCount.remove(width);
-        int ans = height;
-        for (int position : positionCount.keySet()) {
-            ans = Math.min(ans, height - positionCount.get(position));
-        }
-        return ans;
-    }
 	
 	// Time: O(B lg B), Space: O(B)
-	public int leastBricks2(List<List<Integer>> wall) {
+	public int leastBricks(List<List<Integer>> wall) {
 		if (wall == null || wall.isEmpty()) {
 			return 0;
 		}
